@@ -26,14 +26,17 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: node post-ranking.mjs
 
-      - name: Aktualisierten Snapshot zurueckschreiben
+      - name: Webapp-Daten neu erzeugen
+        run: node build-data.mjs
+
+      - name: Aktualisierte Daten zurueckschreiben
         run: |
-          if [ -n "$(git status --porcelain snapshot.json)" ]; then
+          git add snapshot.json docs/data
+          if [ -n "$(git status --porcelain snapshot.json docs/data)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add snapshot.json
-            git commit -m "Update ranking snapshot"
+            git commit -m "Update ranking snapshot + webapp data"
             git push
           else
-            echo "Kein Snapshot-Update noetig."
+            echo "Kein Update noetig."
           fi
