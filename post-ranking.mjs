@@ -246,8 +246,17 @@ async function main() {
   headerLPR += '🚀 Biggest Position-Climber: ' +
     (bestPos ? `${bestPos.name} (+${bestPos.gain} positions)` : '— (no position changes)') + '\n\n';
   headerLPR += '**NEW entries this update**\n';
-  if (newEntries.length) newEntries.forEach((n) => { headerLPR += '• ' + n + '\n'; });
-  else headerLPR += '• None\n';
+  if (newEntries.length) {
+    // Schutz gegen das 2000-Zeichen-Limit: bei sehr vielen Neuzugaengen
+    // (z. B. allererster Lauf mit leerem Snapshot) nur die ersten N listen.
+    const NEW_ENTRIES_DISPLAY_LIMIT = 30;
+    const shown = newEntries.slice(0, NEW_ENTRIES_DISPLAY_LIMIT);
+    shown.forEach((n) => { headerLPR += '• ' + n + '\n'; });
+    const rest = newEntries.length - shown.length;
+    if (rest > 0) headerLPR += `• … und ${rest} weitere\n`;
+  } else {
+    headerLPR += '• None\n';
+  }
   headerLPR += '\n';
   headerLPR += '-# LPR = League Performance Rating\n';
   headerLPR += '-# DSR = Driver Skill Rating\n';
