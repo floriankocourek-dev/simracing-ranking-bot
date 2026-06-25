@@ -24,6 +24,7 @@ const TOP_LIMIT = 100;
 const BLOCK_SIZE = 50;
 const INTER_MESSAGE_DELAY_MS = 1500;
 const TIMEZONE = 'Europe/Vienna';
+const WEBAPP_URL = 'https://floriankocourek-dev.github.io/simracing-ranking-bot/';
 const POINTS_ALLOCATION_LINK =
   'https://discord.com/channels/1366444766484627456/1456377967562330245';
 
@@ -238,7 +239,8 @@ async function main() {
   const messages = [];
 
   let headerLPR = '# 🏁 Ranked by LPR - Top 100 🏁\n';
-  headerLPR += 'date: ' + dateStr + '\n\n';
+  headerLPR += 'date: ' + dateStr + '\n';
+  headerLPR += '🌐 **Full ranking, driver profiles & history charts:** ' + WEBAPP_URL + '\n\n';
   headerLPR += '📈 Biggest LPR Gain: ' +
     (bestLpr ? `${bestLpr.name} (+${Math.round(bestLpr.gain)})` : '— (no changes since last update)') + '\n';
   headerLPR += '⚡ Biggest DSR Gain: ' +
