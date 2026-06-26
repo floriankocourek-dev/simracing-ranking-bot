@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRCrating — Stats</title>
+  <link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+  <div id="site-nav"></div>
+  <header class="page-head wrap">
+    <h1>League Stats</h1>
+    <p class="info">Big-picture numbers for the whole league, all derived from the race data.</p>
+  </header>
+  <main class="wrap" id="content">
+    <div class="totals" id="totals"></div>
+
+    <section class="panel">
+      <h2>Skill vs. Activity</h2>
+      <p class="info" id="scatter-info"></p>
+      <div class="chartbox"><canvas id="scatter"></canvas></div>
+    </section>
+
+    <section class="panel">
+      <h2>Monthly recap <span class="dim" id="recap-month"></span></h2>
+      <p class="info">A snapshot of the most recent month.</p>
+      <div class="cards" id="recap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Activity per month</h2>
+      <p class="info" id="activity-info"></p>
+      <div class="chartbox"><canvas id="activity"></canvas></div>
+    </section>
+
+    <div class="grid-2">
+      <section class="panel">
+        <h2>Closest LPR battles</h2>
+        <p class="info" id="clpr-info"></p>
+        <div id="closest-lpr"></div>
+      </section>
+      <section class="panel">
+        <h2>Closest DSR battles</h2>
+        <p class="info" id="cdsr-info"></p>
+        <div id="closest-dsr"></div>
+      </section>
+    </div>
+
+    <section class="panel">
+      <h2>Division distribution</h2>
+      <p class="info" id="dist-info"></p>
+      <div class="totals" id="dist"></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="assets/common.js"></script>
+  <script src="assets/stats.js"></script>
+</body>
+</html>

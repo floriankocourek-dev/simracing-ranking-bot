@@ -276,6 +276,7 @@ function buildAll(events, published) {
       lpr: cur.lpr, dsr: cur.dsr, lpr_pos: cur.lp, dsr_pos: cur.dp,
       lpr_trend: pv ? (pv.lp - cur.lp) : 0,
       dsr_trend: pv ? (pv.dp - cur.dp) : 0,
+      current: { lpr: cur.lpr, dsr: cur.dsr, lpr_pos: cur.lp, dsr_pos: cur.dp },
       points_per_race: ppr,
       bests: {
         best_lpr: round2(bestLpr), best_dsr: round2(bestDsr),
