@@ -22,9 +22,9 @@
     </section>
 
     <section class="panel">
-      <h2>Monthly recap <span class="dim" id="recap-month"></span></h2>
-      <p class="info">A snapshot of the most recent month.</p>
-      <div class="cards" id="recap"></div>
+      <h2>Participants per event</h2>
+      <p class="info">Number of drivers in each event over time (oldest → newest). Lets you see at a glance whether turnout is trending up, down or holding steady.</p>
+      <div class="chartbox"><canvas id="participants"></canvas></div>
     </section>
 
     <section class="panel">
@@ -33,23 +33,10 @@
       <div class="chartbox"><canvas id="activity"></canvas></div>
     </section>
 
-    <div class="grid-2">
-      <section class="panel">
-        <h2>Closest LPR battles</h2>
-        <p class="info" id="clpr-info"></p>
-        <div id="closest-lpr"></div>
-      </section>
-      <section class="panel">
-        <h2>Closest DSR battles</h2>
-        <p class="info" id="cdsr-info"></p>
-        <div id="closest-dsr"></div>
-      </section>
-    </div>
-
     <section class="panel">
-      <h2>Division distribution</h2>
-      <p class="info" id="dist-info"></p>
-      <div class="totals" id="dist"></div>
+      <h2>Monthly recap <span class="dim" id="recap-month"></span></h2>
+      <p class="info">A snapshot of the most recent month.</p>
+      <div class="cards" id="recap"></div>
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>

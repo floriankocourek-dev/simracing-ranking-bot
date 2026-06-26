@@ -433,20 +433,6 @@ function buildStats(events, drivers, raceMap, latestDate) {
   }
   const activity_by_month = [...months.values()].map((m) => ({ month: m.month, races: m.races, active_drivers: m.drivers.size })).sort((a, b) => a.month < b.month ? -1 : 1);
 
-  // division distribution (aktuelle Division A/B/C)
-  const divCount = { A: 0, B: 0, C: 0 };
-  for (const d of drivers) if (d.division.current && divCount[d.division.current] != null) divCount[d.division.current]++;
-  const division_distribution = DIVISIONS.map((t) => ({ tier: t, drivers: divCount[t] }));
-
-  // closest battles (aktuelles Ranking)
-  const byLpr = drivers.filter((d) => d.lpr_pos).slice().sort((a, b) => a.lpr_pos - b.lpr_pos);
-  const byDsr = drivers.filter((d) => d.dsr_pos).slice().sort((a, b) => a.dsr_pos - b.dsr_pos);
-  const closest = (arr, key) => {
-    const pairs = [];
-    for (let i = 0; i < arr.length - 1; i++) pairs.push({ a: { slug: arr[i].slug, driver: arr[i].driver, value: arr[i][key] }, b: { slug: arr[i + 1].slug, driver: arr[i + 1].driver, value: arr[i + 1][key] }, gap: round2(arr[i][key] - arr[i + 1][key]) });
-    return pairs.sort((x, y) => x.gap - y.gap).slice(0, 10);
-  };
-
   // monthly recap (letzter Monat)
   const lastMonth = latestDate.slice(0, 7);
   const monthDrivers = new Map();
@@ -475,9 +461,6 @@ function buildStats(events, drivers, raceMap, latestDate) {
     totals: { drivers: drivers.length, events: eventKeys.size, races: raceMap.size },
     participants_over_time,
     activity_by_month,
-    division_distribution,
-    closest_lpr_battles: closest(byLpr, 'lpr'),
-    closest_dsr_battles: closest(byDsr, 'dsr'),
     monthly_recap: {
       month: lastMonth,
       most_improved_dsr: mostImproved,

@@ -1,12 +1,9 @@
-// Stats: Scatter (Skill vs Activity), Monthly Recap, Aktivität/Monat, Closest Battles, Division-Verteilung.
+// Stats: Scatter (Skill vs Activity), Teilnehmer pro Event, Aktivität/Monat, Monthly Recap.
 (function () {
   const { fmt, escapeHtml, driverLink, GLOSSARY } = window.TRC;
 
   document.getElementById('scatter-info').textContent = GLOSSARY.scatter;
   document.getElementById('activity-info').textContent = GLOSSARY.activity_by_month;
-  document.getElementById('clpr-info').textContent = GLOSSARY.closest_battles;
-  document.getElementById('cdsr-info').textContent = GLOSSARY.closest_battles;
-  document.getElementById('dist-info').textContent = GLOSSARY.division_distribution;
 
   Promise.all([
     fetch('data/stats.json').then((r) => r.json()),
@@ -31,15 +28,8 @@
       rcard('Most wins', rc.most_wins) +
       `<div class="card"><div class="label">New drivers</div><div class="big">${(rc.new_drivers || []).length}</div><div class="sub">${(rc.new_drivers || []).slice(0, 6).map((n) => driverLink(n.slug, n.driver)).join(', ')}</div></div>`;
 
-    // Closest battles
-    const battles = (arr) => arr.map((b) => `<div class="battle"><span>${driverLink(b.a.slug, b.a.driver)} vs ${driverLink(b.b.slug, b.b.driver)}</span><span class="gap">${fmt(b.gap)}</span></div>`).join('');
-    document.getElementById('closest-lpr').innerHTML = battles(s.closest_lpr_battles);
-    document.getElementById('closest-dsr').innerHTML = battles(s.closest_dsr_battles);
-
-    // Division distribution
-    document.getElementById('dist').innerHTML = s.division_distribution.map((d) => `<div class="t"><b>${fmt(d.drivers, 0)}</b><span>Division ${d.tier}</span></div>`).join('');
-
     drawScatter(drivers);
+    drawParticipants(s.participants_over_time);
     drawActivity(s.activity_by_month);
   }).catch((e) => { console.error(e); document.getElementById('content').innerHTML = '<p class="empty">Could not load stats.</p>'; });
 
@@ -53,14 +43,34 @@
       data: { datasets: [{ data: pts, backgroundColor: accent + 'cc', pointRadius: 4, pointHoverRadius: 7 }] },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: { callbacks: { label: (c) => `${c.raw.driver}: LPR ${fmt(c.raw.x)} / DSR ${fmt(c.raw.y)}` } }
-        },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${c.raw.driver}: LPR ${fmt(c.raw.x)} / DSR ${fmt(c.raw.y)}` } } },
         onClick: (e, els) => { if (els[0]) { const p = pts[els[0].index]; if (p) location.href = 'driver.html?d=' + encodeURIComponent(p.slug); } },
         scales: {
           x: { title: { display: true, text: 'LPR (activity)', color: dim }, ticks: { color: dim }, grid: { color: grid } },
           y: { title: { display: true, text: 'DSR (skill)', color: dim }, ticks: { color: dim }, grid: { color: grid } }
+        }
+      }
+    });
+  }
+
+  function drawParticipants(rows) {
+    const accent = cssVar('--accent', '#36e0c8'), dim = cssVar('--text-dim', '#8b93a3'), grid = 'rgba(255,255,255,0.06)';
+    const labels = rows.map((r) => r.date);
+    const names = rows.map((r) => r.name);
+    new Chart(document.getElementById('participants'), {
+      type: 'line',
+      data: { labels, datasets: [{ label: 'Participants', data: rows.map((r) => r.participants), borderColor: accent, backgroundColor: accent + '22', borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: 0.25, fill: true }] },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        animation: { duration: 800, easing: 'easeOutQuart' },
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { title: (items) => names[items[0].dataIndex] || '', label: (c) => `${c.parsed.y} drivers · ${labels[c.dataIndex]}` } }
+        },
+        scales: {
+          x: { ticks: { color: dim, maxTicksLimit: 10, autoSkip: true }, grid: { color: grid } },
+          y: { beginAtZero: true, ticks: { color: dim, precision: 0 }, grid: { color: grid }, title: { display: true, text: 'Drivers', color: dim } }
         }
       }
     });
