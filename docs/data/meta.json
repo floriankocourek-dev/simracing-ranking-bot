@@ -1,7 +1,9 @@
 {
-  "generated_at": "2026-06-25T19:46:41.585Z",
+  "generated_at": "2026-06-26T22:10:55.380Z",
   "driver_count": 190,
   "event_count": 2620,
+  "events": 233,
+  "races": 237,
   "cutoff_count": 164,
   "latest_cutoff": "2026-06-25"
 }
