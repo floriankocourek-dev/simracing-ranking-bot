@@ -78,10 +78,24 @@
       return `<a href="${n.href}"${active}>${n.label}</a>`;
     }).join('');
     const el = document.getElementById('site-nav');
-    if (el) el.innerHTML = `<div class="wrap nav-inner"><a class="brand" href="index.html">TRC<span class="accent">rating</span></a><nav>${links}</nav><a class="nav-logo" href="index.html" aria-label="The Racing Club"><img src="assets/logo.svg" alt="The Racing Club" /></a></div>`;
+    if (el) el.innerHTML = `<div class="wrap nav-inner"><a class="brand" href="index.html">TRC<span class="accent">rating</span></a><nav>${links}</nav></div>`;
   }
 
-  document.addEventListener('DOMContentLoaded', renderNav);
+  // Großes Club-Logo oben rechts in den Seitenkopf setzen (auf jeder Seite)
+  function placeHeaderLogo() {
+    const header = document.querySelector('.site-header, .page-head');
+    if (!header) return;
+    const container = header.classList.contains('wrap') ? header : (header.querySelector('.wrap') || header);
+    container.style.position = 'relative';
+    const a = document.createElement('a');
+    a.href = 'index.html';
+    a.className = 'header-logo';
+    a.setAttribute('aria-label', 'The Racing Club');
+    a.innerHTML = '<img src="assets/logo.svg" alt="The Racing Club" />';
+    container.appendChild(a);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { renderNav(); placeHeaderLogo(); });
 
   window.TRC = { GLOSSARY, BADGES, escapeHtml, fmt, info, driverLink };
 })();

@@ -136,10 +136,14 @@ table.races td.ev { white-space: normal; min-width: 220px; color: var(--text-dim
 .nav-inner nav a { color: var(--text-dim); text-decoration: none; font-size: .85rem; padding: 7px 12px; border-radius: 8px; }
 .nav-inner nav a:hover { color: var(--text); background: var(--bg-soft); }
 .nav-inner nav a.active { color: var(--accent); }
-.nav-inner .nav-logo { margin-left: auto; display: flex; align-items: center; }
-.nav-inner .nav-logo img { height: 34px; width: auto; display: block; opacity: .92; }
-.nav-inner .nav-logo:hover img { opacity: 1; }
-@media (max-width: 560px) { .nav-inner .nav-logo img { height: 26px; } }
+/* Großes Club-Logo oben rechts im Seitenkopf */
+.header-logo { position: absolute; top: 50%; right: 0; transform: translateY(-50%); display: flex; align-items: center; opacity: .95; }
+.header-logo:hover { opacity: 1; }
+.header-logo img { width: auto; display: block; }
+.site-header .header-logo img { height: 120px; }
+.page-head .header-logo img { height: 60px; }
+@media (max-width: 760px) { .site-header .header-logo img { height: 72px; } .page-head .header-logo img { height: 46px; } }
+@media (max-width: 480px) { .header-logo { display: none; } }
 
 /* ---------- Info text (Erklärungen) ---------- */
 .info { color: var(--text-dim); font-size: .8rem; line-height: 1.45; margin: 2px 0 14px; max-width: 70ch; }
