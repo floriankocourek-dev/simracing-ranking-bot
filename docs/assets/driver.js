@@ -51,9 +51,11 @@
     document.getElementById('races').innerHTML = races.map((h) => {
       const dg = h.dsr_gain > 0 ? `+${fmt(h.dsr_gain)}` : fmt(h.dsr_gain);
       const dgc = h.dsr_gain > 0 ? 'trend up' : (h.dsr_gain < 0 ? 'trend down' : 'trend flat');
+      const lg = h.lpr_gain > 0 ? `+${fmt(h.lpr_gain)}` : fmt(h.lpr_gain);
+      const lgc = h.lpr_gain > 0 ? 'trend up' : (h.lpr_gain < 0 ? 'trend down' : 'trend flat');
       return `<tr><td>${h.date}</td><td class="ev">${escapeHtml(h.event)}</td><td>${escapeHtml(h.tier)}</td>
         <td class="col-num">${h.position || '–'}</td><td class="col-num">${fmt(h.final_points)}</td>
-        <td class="col-num">${fmt(h.dsr)}</td><td class="col-num ${dgc}">${dg}</td><td class="col-num">${fmt(h.lpr)}</td></tr>`;
+        <td class="col-num">${fmt(h.dsr)}</td><td class="col-num ${dgc}">${dg}</td><td class="col-num">${fmt(h.lpr)}</td><td class="col-num ${lgc}">${lg}</td></tr>`;
     }).join('');
 
     content.hidden = false;
