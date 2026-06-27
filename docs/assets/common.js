@@ -78,7 +78,7 @@
       return `<a href="${n.href}"${active}>${n.label}</a>`;
     }).join('');
     const el = document.getElementById('site-nav');
-    if (el) el.innerHTML = `<div class="wrap nav-inner"><a class="brand" href="index.html">TRC<span class="accent">rating</span></a><nav>${links}</nav></div>`;
+    if (el) el.innerHTML = `<div class="wrap nav-inner"><a class="brand" href="index.html">TRC<span class="accent">rating</span></a><nav>${links}</nav><a class="nav-logo" href="index.html" aria-label="The Racing Club"><img src="assets/logo.svg" alt="The Racing Club" /></a></div>`;
   }
 
   document.addEventListener('DOMContentLoaded', renderNav);
