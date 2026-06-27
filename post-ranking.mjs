@@ -24,7 +24,7 @@ const TOP_LIMIT = 100;
 const BLOCK_SIZE = 50;
 const INTER_MESSAGE_DELAY_MS = 1500;
 const TIMEZONE = 'Europe/Vienna';
-const WEBAPP_URL = 'https://floriankocourek-dev.github.io/simracing-ranking-bot/';
+const WEBAPP_URL = 'https://theracingclub.online/';
 const POINTS_ALLOCATION_LINK =
   'https://discord.com/channels/1366444766484627456/1456377967562330245';
 
