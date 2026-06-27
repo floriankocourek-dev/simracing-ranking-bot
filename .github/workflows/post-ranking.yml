@@ -1,9 +1,13 @@
 name: Post Ranking to Discord
 
-# Manueller Start per Knopf (Actions-Tab -> "Run workflow").
-# Spaeter optional: Zeitplan oder Auto-Trigger aus dem Sheet.
+# Auslöser:
+#  - workflow_dispatch: manueller Knopf im Actions-Tab
+#  - repository_dispatch (type "recalc"): aus dem Google Sheet per API
+#    (Klick auf "Ratings & Ranking neu berechnen")
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [recalc]
 
 permissions:
   contents: write   # damit snapshot.json zurueckgeschrieben werden darf
