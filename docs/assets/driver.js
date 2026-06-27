@@ -45,15 +45,6 @@
       gainCard('Biggest DSR jump', s.biggest_dsr_gain, GLOSSARY.biggest_dsr_jump)
     ].join('');
 
-    // Division-Aufstieg
-    if (d.division && d.division.progression && d.division.progression.length) {
-      const panel = document.getElementById('division-panel');
-      panel.hidden = false;
-      panel.querySelector('.info').textContent = GLOSSARY.division;
-      const steps = d.division.progression.map((p) => `<span class="step">${escapeHtml(p.tier)}<span class="dim"> from ${p.from}</span></span>`);
-      document.getElementById('divprog').innerHTML = steps.join('<span class="arrow">→</span>');
-    }
-
     // Rennliste
     const races = d.history.slice().reverse();
     document.getElementById('race-count').textContent = `(${d.history.length})`;
