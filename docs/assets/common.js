@@ -95,7 +95,31 @@
     container.appendChild(a);
   }
 
-  document.addEventListener('DOMContentLoaded', () => { renderNav(); placeHeaderLogo(); });
+  // Dezenter Besucherzähler (kostenloser, anmeldefreier Dienst).
+  // Erhöht 1x pro Browser-Sitzung; sonst nur Anzeige. Bei Ausfall: unsichtbar.
+  function initVisitCounter() {
+    const BASE = 'https://abacus.jasoncameron.dev';
+    const NS = 'theracingclub', KEY = 'visits';
+    const line = document.createElement('div');
+    line.className = 'visit-line';
+    line.innerHTML = '👁 <span id="visit-count">…</span> visits';
+    const footer = document.querySelector('.site-footer');
+    (footer || document.body).appendChild(line);
+
+    const fresh = !sessionStorage.getItem('trc_seen');
+    const url = BASE + (fresh ? '/hit/' : '/get/') + NS + '/' + KEY;
+    fetch(url)
+      .then((r) => r.json())
+      .then((d) => {
+        if (d && typeof d.value === 'number') {
+          document.getElementById('visit-count').textContent = d.value.toLocaleString('en-US');
+          sessionStorage.setItem('trc_seen', '1');
+        } else { line.style.display = 'none'; }
+      })
+      .catch(() => { line.style.display = 'none'; });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { renderNav(); placeHeaderLogo(); initVisitCounter(); });
 
   window.TRC = { GLOSSARY, BADGES, escapeHtml, fmt, info, driverLink };
 })();

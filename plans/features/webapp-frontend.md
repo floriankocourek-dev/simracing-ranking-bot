@@ -17,7 +17,7 @@ events, stats, hall of fame. Every stat carries a short English explanation.
 - `docs/events.html` + `docs/assets/events.js`, `docs/event.html` + `docs/assets/event.js`
 - `docs/halloffame.html` + `docs/assets/halloffame.js`
 - `docs/assets/common.js` — shared: nav, glossary (stat explanations), badge defs,
-  helpers, header-logo injection
+  helpers, header-logo injection, visit counter (footer)
 - `docs/assets/app.css` — all styling
 - `docs/assets/logo.svg` — club logo (recolored light for dark theme)
 
@@ -41,8 +41,9 @@ events, stats, hall of fame. Every stat carries a short English explanation.
 - **Shared files (high conflict risk):** `app.css` and `common.js` affect EVERY page —
   change with care. `common.js` injects both the nav and the header logo (handles both
   `.site-header` and `.page-head` headers).
-- **External dep:** Chart.js from jsDelivr CDN (the only external request; CSP-free since
-  it's our own static site).
+- **External deps:** Chart.js from jsDelivr CDN; visit counter via
+  `abacus.jasoncameron.dev` (free, no-signup hit counter, key `theracingclub/visits`,
+  increments once per browser session, hides itself if the service is unreachable).
 - **Invariants:** #5 (static/read-only), #7 (driver `current`), #8 (CNAME).
 
 ## Notes / future
