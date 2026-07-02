@@ -49,6 +49,16 @@ function parseNum(raw) {
   const n = Number(s);
   return isNaN(n) ? 0 : n;
 }
+// Wie parseNum, aber leere/ungültige Zelle -> null (nicht 0).
+// Wichtig für Rating_after: eine noch nicht berechnete Zeile darf DSR nicht auf 0 ziehen.
+function parseNumN(raw) {
+  if (raw == null) return null;
+  let s = String(raw).trim().replace(/^"|"$/g, '').trim();
+  if (s === '') return null;
+  if (s.indexOf(',') !== -1 && s.indexOf('.') === -1) s = s.replace(',', '.');
+  const n = Number(s);
+  return isNaN(n) ? null : n;
+}
 function parseCSV(text) {
   const rows = [];
   let row = [], field = '', q = false;
@@ -170,8 +180,8 @@ async function loadEvents() {
       driver,
       position: parseNum(row[iPos]),
       finalPts: parseNum(row[iFinal]),
-      dsrBefore: iBefore === -1 ? null : parseNum(row[iBefore]),
-      dsrAfter: parseNum(row[iAfter])
+      dsrBefore: iBefore === -1 ? null : parseNumN(row[iBefore]),
+      dsrAfter: parseNumN(row[iAfter])
     });
   }
   events.forEach((e, i) => { e._i = i; });
@@ -191,7 +201,10 @@ function reconstructSnapshots(events) {
     for (const [driver, list] of byDriver) {
       if (list[0].dayVal > cutVal) continue;
       let dsr = null, lpr = 0;
-      for (const e of list) { if (e.dayVal > cutVal) break; dsr = e.dsrAfter; if (e.dayVal >= winStart) lpr += e.finalPts; }
+      // Rating_after nur übernehmen, wenn vorhanden -> noch nicht berechnete Rennen
+      // ziehen den DSR nicht auf 0, der letzte bekannte Wert bleibt erhalten.
+      for (const e of list) { if (e.dayVal > cutVal) break; if (e.dsrAfter != null) dsr = e.dsrAfter; if (e.dayVal >= winStart) lpr += e.finalPts; }
+      if (dsr == null) continue; // Fahrer bisher ganz ohne bewertetes Rennen -> (noch) nicht werten
       standings.push({ d: driver, lpr: round2(lpr), dsr: round2(dsr) });
     }
     const byLpr = [...standings].sort((a, b) => b.lpr - a.lpr || b.dsr - a.dsr);
@@ -279,11 +292,13 @@ function buildAll(events, published, driverMeta) {
       let lpr = 0;
       for (let j = 0; j <= i; j++) if (list[j].dayVal >= winStart) lpr += list[j].finalPts;
       lpr = round2(lpr);
-      const dsr = round2(e.dsrAfter);
-      const dsrGain = round2(dsr - (e.dsrBefore != null ? e.dsrBefore : (prevDsr != null ? prevDsr : 1000)));
+      // noch nicht berechnetes Rennen (leeres Rating_after): letzten bekannten DSR beibehalten, Gain 0
+      const rawDsr = e.dsrAfter;
+      const dsr = rawDsr != null ? round2(rawDsr) : (prevDsr != null ? prevDsr : null);
+      const dsrGain = rawDsr != null ? round2(rawDsr - (e.dsrBefore != null ? e.dsrBefore : (prevDsr != null ? prevDsr : 1000))) : 0;
       const lprGain = round2(lpr - prevLpr);
 
-      if (dsr > bestDsr) bestDsr = dsr;
+      if (dsr != null && dsr > bestDsr) bestDsr = dsr;
       if (lpr > bestLpr) bestLpr = lpr;
       if (e.position === 1) wins++;
       if (e.position >= 1 && e.position <= 3) podiums++;
@@ -578,7 +593,10 @@ async function main() {
 
   const driverMeta = await loadDriverMeta();
   console.log(`[DATA] Drivers-Tab: ${driverMeta.size} Einträge (Land/Nummer).`);
-  const { drivers, raceMap, latestDate } = buildAll(events, merged, driverMeta);
+  // WICHTIG: aktuelle Anzeige + Trend + Bestmarken aus der FRISCHEN Rekonstruktion
+  // (nicht aus dem eingefrorenen Archiv 'merged') -> immer live-korrekt, immun gegen
+  // eingefrorene Fehlwerte. 'merged' bleibt nur das Archiv (published-history.json).
+  const { drivers, raceMap, latestDate } = buildAll(events, reconstructed, driverMeta);
   const leaderboards = buildLeaderboards(drivers, raceMap);
   const { index: eventIndex, files: eventFiles } = buildEvents(raceMap, drivers);
   const stats = buildStats(events, drivers, raceMap, latestDate);
