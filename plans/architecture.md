@@ -47,6 +47,14 @@ endpoints (Ranking tab = `export?...&gid=`, Events tab = `gviz/tq?...&sheet=Even
 2. **Stateless regeneration.** Every run rebuilds all of `docs/data/` from Events.
    The one stateful file is `docs/data/published-history.json` — **append-only, frozen**
    (dedup by cutoff date). Don't rewrite past entries.
+   - **Current ranking/trend/bests are built from the FRESH reconstruction, NOT the
+     frozen archive** — so display is always live-correct and immune to any bad frozen
+     snapshot. (Bug 2026-07-02: current was read from the frozen archive; a snapshot
+     frozen while new races were still unrated showed DSR=0 and stuck.)
+   - **Empty `Rating_after` = not-yet-rated race.** Parsed as `null` (not 0) via
+     `parseNumN`; DSR carries forward the last known value. So entering new race rows in
+     the Sheet BEFORE running the recalc no longer shows DSR=0 — it shows the last rated
+     DSR until the engine fills `Rating_after`.
 3. **Secrets locations (never in code or the Sheet):**
    - `DISCORD_WEBHOOK`, `SHEET_CSV_URL` → GitHub repo **Secrets**.
    - `GITHUB_TOKEN` (fine-grained, this repo, Contents R/W) → Apps Script **Script
