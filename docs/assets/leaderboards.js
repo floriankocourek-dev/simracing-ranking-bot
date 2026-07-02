@@ -1,9 +1,10 @@
 // Leaderboards: overall + per-Division (A/B/C) + per-Format (Cup/3x3).
 (function () {
-  const { fmt, escapeHtml, info, driverLink, GLOSSARY } = window.TRC;
+  const { fmt, escapeHtml, info, driverLink, GLOSSARY, flagImg } = window.TRC;
   const scopeEl = document.getElementById('scope');
   const grid = document.getElementById('grid');
   let data = null, scope = 'overall';
+  let metaBySlug = new Map(); // slug -> {country, country_name} aus drivers-index
 
   // Titel + Erklärung + Wert-Formatierung je Liste
   const META = {
@@ -46,7 +47,9 @@
   }
   function liRow(i, x, extra, val) {
     const cls = i < 3 ? ` class="p${i + 1}"` : '';
-    return `<li${cls}><span class="pos"></span><span class="nm">${driverLink(x.slug, x.driver)}${extra ? ` <span class="extra">${extra}</span>` : ''}</span>${val !== '' ? `<span class="vl">${val}</span>` : ''}</li>`;
+    const m = metaBySlug.get(x.slug) || {};
+    const flag = flagImg(m.country, m.country_name);
+    return `<li${cls}><span class="pos"></span><span class="nm">${flag ? flag + ' ' : ''}${driverLink(x.slug, x.driver)}${extra ? ` <span class="extra">${extra}</span>` : ''}</span>${val !== '' ? `<span class="vl">${val}</span>` : ''}</li>`;
   }
 
   function render() {
@@ -67,6 +70,13 @@
     }));
   }
 
-  fetch('data/leaderboards.json').then((r) => r.json()).then((d) => { data = d; buildScope(); render(); })
-    .catch((e) => { grid.innerHTML = '<p class="empty">Could not load leaderboards.</p>'; console.error(e); });
+  Promise.all([
+    fetch('data/leaderboards.json').then((r) => r.json()),
+    fetch('data/drivers-index.json').then((r) => r.json()).catch(() => [])
+  ]).then(([lb, idx]) => {
+    data = lb;
+    metaBySlug = new Map((idx || []).map((d) => [d.slug, { country: d.country, country_name: d.country_name }]));
+    buildScope();
+    render();
+  }).catch((e) => { grid.innerHTML = '<p class="empty">Could not load leaderboards.</p>'; console.error(e); });
 })();
