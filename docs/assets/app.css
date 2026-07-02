@@ -106,13 +106,29 @@ td.col-driver a:hover { color: var(--accent); }
 
 .empty { text-align: center; color: var(--text-dim); padding: 40px 0; }
 
+/* Flaggen + Rennnummer */
+.flag { border-radius: 2px; vertical-align: middle; box-shadow: 0 0 0 1px rgba(255, 255, 255, .1); }
+.col-flag { width: 34px; text-align: center; }
+.col-flag img { vertical-align: middle; }
+th.col-no, td.col-no { width: 54px; color: var(--text-dim); font-weight: 700; }
+
+/* Nations (Stats) */
+.nations { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 10px; }
+.nation { display: flex; align-items: center; gap: 8px; background: var(--bg-row); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: .88rem; }
+.nation .nn { font-weight: 700; }
+.nation .nc { color: var(--text-dim); }
+.nation .nt { margin-left: auto; font-size: .8rem; white-space: nowrap; }
+.nation .nt a { color: var(--accent); }
+
 /* ---------- Mobile: Ranking-Tabelle kompakter, damit sie passt ---------- */
 @media (max-width: 560px) {
   .wrap { padding: 0 14px; }
   table.ranking th, table.ranking td { padding: 11px 7px; }
   table.ranking { font-size: .9rem; }
-  .col-rank { width: 30px; }
-  .col-trend { width: 50px; }
+  .col-rank { width: 26px; }
+  .col-trend { width: 48px; }
+  .col-flag { width: 26px; }
+  th.col-no, td.col-no { width: 38px; }
   td.col-driver a { word-break: break-word; }
 }
 

@@ -40,7 +40,9 @@
       const dsrCls = sortKey === 'dsr' ? 'val-primary' : 'val-dim';
       return `<tr${cls}>
         <td class="rank">${rank}</td>
+        <td class="col-flag">${window.TRC.flagImg(d.country, d.country_name)}</td>
         <td class="col-driver"><a href="driver.html?d=${encodeURIComponent(d.slug)}">${escapeHtml(d.driver)}</a></td>
+        <td class="col-num col-no">${d.number ? '#' + escapeHtml(String(d.number)) : ''}</td>
         <td class="col-num ${lprCls}">${fmt(d.lpr)}</td>
         <td class="col-num ${dsrCls}">${fmt(d.dsr)}</td>
         <td class="col-trend">${trendCell(d[trendKey] || 0)}</td>

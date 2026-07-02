@@ -41,7 +41,10 @@ events, stats, hall of fame. Every stat carries a short English explanation.
 - **Shared files (high conflict risk):** `app.css` and `common.js` affect EVERY page —
   change with care. `common.js` injects both the nav and the header logo (handles both
   `.site-header` and `.page-head` headers).
-- **External deps:** Chart.js from jsDelivr CDN; visit counter via
+- **Country flags** rendered as images via `flagcdn.com` (keyed by ISO2; renders on
+  Windows unlike emoji flags; `onerror` removes a broken flag). Flag + racing number
+  shown in the ranking table, driver profile header, and the Stats "Nations" panel.
+- **External deps:** Chart.js from jsDelivr CDN; flag images from flagcdn.com; visit counter via
   `abacus.jasoncameron.dev` (free, no-signup hit counter, key `theracingclub/visits`,
   increments once per browser session, hides itself if the service is unreachable).
 - **Invariants:** #5 (static/read-only), #7 (driver `current`), #8 (CNAME).

@@ -70,6 +70,12 @@
   function driverLink(slug, driver) {
     return `<a href="driver.html?d=${encodeURIComponent(slug)}">${escapeHtml(driver)}</a>`;
   }
+  // Länderflagge als Bild (flagcdn) — rendert auch auf Windows korrekt (anders als Emoji-Flaggen)
+  function flagImg(iso, name) {
+    if (!iso) return '';
+    const t = escapeHtml(name || iso);
+    return `<img class="flag" src="https://flagcdn.com/24x18/${iso}.png" srcset="https://flagcdn.com/48x36/${iso}.png 2x" width="24" height="18" alt="${t}" title="${t}" loading="lazy" onerror="this.remove()">`;
+  }
 
   function renderNav() {
     const here = location.pathname.split('/').pop() || 'index.html';
@@ -121,5 +127,5 @@
 
   document.addEventListener('DOMContentLoaded', () => { renderNav(); placeHeaderLogo(); initVisitCounter(); });
 
-  window.TRC = { GLOSSARY, BADGES, escapeHtml, fmt, info, driverLink };
+  window.TRC = { GLOSSARY, BADGES, escapeHtml, fmt, info, driverLink, flagImg };
 })();

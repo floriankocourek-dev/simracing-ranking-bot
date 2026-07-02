@@ -27,6 +27,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const SHEET_ID = process.env.SHEET_ID || '1K7dAEFipikKOX8KxjgdFADQXB146Rgtuku5F5YDKgcE';
 const EVENTS_CSV_URL = process.env.EVENTS_CSV_URL ||
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Events`;
+const DRIVERS_CSV_URL = process.env.DRIVERS_CSV_URL ||
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Drivers`;
 
 const DATA_DIR = join(__dirname, 'docs', 'data');
 const DRIVERS_DIR = join(DATA_DIR, 'drivers');
@@ -86,6 +88,59 @@ function board(items, value, opts = {}) {
   // asc (z. B. avg_finish, consistency): aufsteigend; sonst absteigend (most/highest)
   list.sort((a, b) => dir * ((a.value ?? 0) - (b.value ?? 0)));
   return list.slice(0, opts.n || TOP_N);
+}
+
+// ---------- Länder: Klarname -> ISO-3166 alpha-2 (für Flaggen) ----------
+const COUNTRY_ISO = {
+  'usa': 'us', 'united states': 'us', 'united states of america': 'us', 'america': 'us',
+  'uk': 'gb', 'united kingdom': 'gb', 'great britain': 'gb', 'britain': 'gb', 'england': 'gb', 'scotland': 'gb', 'wales': 'gb',
+  'south africa': 'za', 'canada': 'ca', 'netherlands': 'nl', 'holland': 'nl', 'croatia': 'hr',
+  'australia': 'au', 'egypt': 'eg', 'poland': 'pl', 'portugal': 'pt', 'brazil': 'br', 'peru': 'pe',
+  'united arab emirates': 'ae', 'uae': 'ae', 'belgium': 'be', 'luxembourg': 'lu', 'spain': 'es',
+  'turkey': 'tr', 'turkiye': 'tr', 'türkiye': 'tr', 'albania': 'al', 'romania': 'ro',
+  'czechia': 'cz', 'czech republic': 'cz', 'austria': 'at', 'iraq': 'iq', 'hungary': 'hu',
+  // gängige Extras für künftige Einträge:
+  'germany': 'de', 'france': 'fr', 'italy': 'it', 'ireland': 'ie', 'new zealand': 'nz',
+  'argentina': 'ar', 'mexico': 'mx', 'sweden': 'se', 'norway': 'no', 'denmark': 'dk',
+  'finland': 'fi', 'switzerland': 'ch', 'japan': 'jp', 'south korea': 'kr', 'korea': 'kr',
+  'india': 'in', 'indonesia': 'id', 'philippines': 'ph', 'malaysia': 'my', 'singapore': 'sg',
+  'thailand': 'th', 'saudi arabia': 'sa', 'qatar': 'qa', 'greece': 'gr', 'chile': 'cl',
+  'colombia': 'co', 'uruguay': 'uy', 'ecuador': 'ec', 'venezuela': 've', 'slovakia': 'sk',
+  'slovenia': 'si', 'serbia': 'rs', 'bulgaria': 'bg', 'ukraine': 'ua', 'lithuania': 'lt',
+  'latvia': 'lv', 'estonia': 'ee', 'iceland': 'is', 'puerto rico': 'pr', 'israel': 'il',
+  'morocco': 'ma', 'nigeria': 'ng', 'kenya': 'ke'
+};
+function countryToIso(name) {
+  if (!name) return null;
+  return COUNTRY_ISO[name.trim().toLowerCase()] || null;
+}
+
+// ---------- Drivers-Tab laden (Land + Rennnummer) ----------
+async function loadDriverMeta() {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Drivers`;
+  const map = new Map();
+  try {
+    const res = await fetch(url);
+    if (!res.ok) { console.warn('Drivers-Tab HTTP ' + res.status); return map; }
+    const rows = parseCSV(await res.text());
+    if (rows.length < 2) return map;
+    const header = rows[0].map((h) => h.trim());
+    const iName = header.indexOf('Driver');
+    const iCountry = header.indexOf('Country');
+    const iNum = header.indexOf('Racingnumber');
+    for (let r = 1; r < rows.length; r++) {
+      const name = (rows[r][iName] || '').trim();
+      if (!name) continue;
+      const cname = iCountry >= 0 ? (rows[r][iCountry] || '').trim() : '';
+      const num = iNum >= 0 ? (rows[r][iNum] || '').trim() : '';
+      map.set(name, {
+        country: countryToIso(cname),
+        country_name: cname || null,
+        number: num || null
+      });
+    }
+  } catch (e) { console.warn('Drivers-Tab nicht ladbar: ' + e); }
+  return map;
 }
 
 // ---------- Events laden ----------
@@ -159,7 +214,7 @@ function mergePublished(reconstructed) {
 }
 
 // ---------- Hauptaufbereitung ----------
-function buildAll(events, published) {
+function buildAll(events, published, driverMeta) {
   const latestDate = events[events.length - 1].date;
 
   // ----- pro Fahrer: Historie mit Gains, dsr_before -----
@@ -270,8 +325,10 @@ function buildAll(events, published) {
     if (consistency != null && consistency <= 2.5) badges.push('metronome');
     if (dayValue(list[0].date) <= minusDays(latestDate, 180)) badges.push('veteran');
 
+    const meta = (driverMeta && driverMeta.get(driver)) || {};
     drivers.push({
       driver, slug,
+      country: meta.country || null, country_name: meta.country_name || null, number: meta.number || null,
       first_seen: list[0].date, events_count: starts,
       lpr: cur.lpr, dsr: cur.dsr, lpr_pos: cur.lp, dsr_pos: cur.dp,
       lpr_trend: pv ? (pv.lp - cur.lp) : 0,
@@ -457,10 +514,22 @@ function buildStats(events, drivers, raceMap, latestDate) {
   const topMap = (m) => { let best = null; for (const [k, v] of m) if (!best || v > best.value) best = { ...ref(k), value: v }; return best; };
   const newDrivers = drivers.filter((d) => d.first_seen.slice(0, 7) === lastMonth).map((d) => ref(d.driver));
 
+  // Nations: Fahrer pro Land + stärkster Fahrer (nach DSR) je Land
+  const nationMap = new Map();
+  for (const d of drivers) {
+    if (!d.country) continue;
+    if (!nationMap.has(d.country)) nationMap.set(d.country, { country: d.country, country_name: d.country_name, drivers: 0, top: null });
+    const n = nationMap.get(d.country);
+    n.drivers++;
+    if (!n.top || d.dsr > n.top.dsr) n.top = { slug: d.slug, driver: d.driver, dsr: d.dsr };
+  }
+  const nations = [...nationMap.values()].sort((a, b) => b.drivers - a.drivers || (b.top?.dsr || 0) - (a.top?.dsr || 0));
+
   return {
     totals: { drivers: drivers.length, events: eventKeys.size, races: raceMap.size },
     participants_over_time,
     activity_by_month,
+    nations,
     monthly_recap: {
       month: lastMonth,
       most_improved_dsr: mostImproved,
@@ -507,7 +576,9 @@ async function main() {
   const { merged, added, seeded } = mergePublished(reconstructed);
   console.log(`[DATA] Published History: ${seeded ? 'SEED' : 'append'} +${added}, gesamt ${merged.length}.`);
 
-  const { drivers, raceMap, latestDate } = buildAll(events, merged);
+  const driverMeta = await loadDriverMeta();
+  console.log(`[DATA] Drivers-Tab: ${driverMeta.size} Einträge (Land/Nummer).`);
+  const { drivers, raceMap, latestDate } = buildAll(events, merged, driverMeta);
   const leaderboards = buildLeaderboards(drivers, raceMap);
   const { index: eventIndex, files: eventFiles } = buildEvents(raceMap, drivers);
   const stats = buildStats(events, drivers, raceMap, latestDate);
@@ -527,7 +598,8 @@ async function main() {
   const index = drivers.map((d) => ({
     driver: d.driver, slug: d.slug, lpr: d.lpr, dsr: d.dsr, lpr_pos: d.lpr_pos, dsr_pos: d.dsr_pos,
     lpr_trend: d.lpr_trend, dsr_trend: d.dsr_trend, events: d.events_count, first_seen: d.first_seen,
-    points_per_race: d.points_per_race, division: d.division.current, badges: d.badges
+    points_per_race: d.points_per_race, division: d.division.current, badges: d.badges,
+    country: d.country, country_name: d.country_name, number: d.number
   })).sort((a, b) => (a.lpr_pos || 9999) - (b.lpr_pos || 9999));
 
   const now = new Date().toISOString();

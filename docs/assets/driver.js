@@ -1,6 +1,6 @@
 // Detailseite (Profil 2.0): Karten, Stats, Division-Aufstieg, Badges, Kurve, Rennliste.
 (function () {
-  const { fmt, escapeHtml, info, GLOSSARY, BADGES } = window.TRC;
+  const { fmt, escapeHtml, info, GLOSSARY, BADGES, flagImg } = window.TRC;
   const slug = new URLSearchParams(location.search).get('d');
   const content = document.getElementById('content');
   const notfound = document.getElementById('notfound');
@@ -16,7 +16,12 @@
   function render(d) {
     document.title = `TRCrating — ${d.driver}`;
     document.getElementById('d-name').textContent = d.driver;
-    document.getElementById('d-sub').textContent = `Member since ${d.first_seen} · ${d.events_count} races`;
+    const bits = [];
+    if (d.country) bits.push(flagImg(d.country, d.country_name) + ' ' + escapeHtml(d.country_name || ''));
+    if (d.number) bits.push('#' + escapeHtml(String(d.number)));
+    bits.push(`Member since ${d.first_seen}`);
+    bits.push(`${d.events_count} races`);
+    document.getElementById('d-sub').innerHTML = bits.join(' &nbsp;·&nbsp; ');
 
     // Badges
     document.getElementById('badges').innerHTML = (d.badges || []).map((b) => {

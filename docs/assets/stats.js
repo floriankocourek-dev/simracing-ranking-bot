@@ -1,6 +1,6 @@
 // Stats: Scatter (Skill vs Activity), Teilnehmer pro Event, Aktivität/Monat, Monthly Recap.
 (function () {
-  const { fmt, escapeHtml, driverLink, GLOSSARY } = window.TRC;
+  const { fmt, escapeHtml, driverLink, GLOSSARY, flagImg } = window.TRC;
 
   document.getElementById('scatter-info').textContent = GLOSSARY.scatter;
   document.getElementById('activity-info').textContent = GLOSSARY.activity_by_month;
@@ -27,6 +27,17 @@
       rcard('Most active', rc.most_active) +
       rcard('Most wins', rc.most_wins) +
       `<div class="card"><div class="label">New drivers</div><div class="big">${(rc.new_drivers || []).length}</div><div class="sub">${(rc.new_drivers || []).slice(0, 6).map((n) => driverLink(n.slug, n.driver)).join(', ')}</div></div>`;
+
+    // Nations
+    const nations = s.nations || [];
+    document.getElementById('nations-count').textContent = nations.length ? `(${nations.length})` : '';
+    document.getElementById('nations').innerHTML = nations.map((n) => `
+      <div class="nation">
+        ${flagImg(n.country, n.country_name)}
+        <span class="nn">${escapeHtml(n.country_name || '')}</span>
+        <span class="nc">${n.drivers} ${n.drivers === 1 ? 'driver' : 'drivers'}</span>
+        <span class="nt">top: ${driverLink(n.top.slug, n.top.driver)} <span class="dim">${fmt(n.top.dsr)}</span></span>
+      </div>`).join('') || '<p class="dim">No country data yet.</p>';
 
     drawScatter(drivers);
     drawParticipants(s.participants_over_time);

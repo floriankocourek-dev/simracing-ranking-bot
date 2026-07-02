@@ -38,6 +38,11 @@ stateless, fully regenerated each run. This is where ALL the computation lives.
 - **Depends on:** Events tab columns (`Date, Event_Name, Driver, Tier, Position,
   FINAL_POINTS, Rating_before, Rating_after`). If the Sheet's columns are renamed/moved,
   update the header lookups in `loadEvents()`.
+- **Also reads the Drivers tab** (`loadDriverMeta()`) for `Country` (English name →
+  ISO2 via `COUNTRY_ISO` map) and `Racingnumber`. Joined to drivers by exact name.
+  Unmapped country → no flag (graceful). Adds `country`/`country_name`/`number` to the
+  index + driver files, and a `nations` array to stats.json (drivers per country + top
+  driver by DSR). Add new countries to `COUNTRY_ISO` when they appear.
 - **Consumed by:** the entire webapp frontend. Changing a JSON shape = update the
   matching page JS (see webapp-frontend plan).
 - **Invariants:** #1 (read Rating_after, never recompute DSR), #2 (stateless + frozen
