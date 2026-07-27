@@ -255,13 +255,18 @@ function buildAll(events, published, driverMeta) {
   }
 
   // ----- Giant-Killer-Zaehlung (pro Race join) -----
+  // Nur echte Wertungsergebnisse zaehlen: Position >= 1 bei BEIDEN Fahrern
+  // (Position 0/leer = DNS/DNF/nicht gewertet -> darf nicht als "alle geschlagen" gelten)
+  // und beide DSR-Staende muessen bekannt sein.
   const giantKills = new Map(); // driver -> count
   for (const race of raceMap.values()) {
     for (const me of race.rows) {
+      if (!(me.position >= 1) || me.dsrBefore == null) continue;
       let kills = 0;
       for (const other of race.rows) {
         if (other === me) continue;
-        if (other.position > me.position && (other.dsrBefore ?? 0) > (me.dsrBefore ?? 0)) kills++;
+        if (!(other.position >= 1) || other.dsrBefore == null) continue;
+        if (other.position > me.position && other.dsrBefore > me.dsrBefore) kills++;
       }
       if (kills) giantKills.set(me.driver, (giantKills.get(me.driver) || 0) + kills);
     }
