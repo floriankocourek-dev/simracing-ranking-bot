@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TRCrating — Operations Manual</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 16mm 16mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.2pt; line-height: 1.5; color: #1b1f27; margin: 0;
+  }
+  h1, h2, h3 { font-family: "Consolas", "SF Mono", ui-monospace, monospace; letter-spacing: -.3px; }
+
+  /* Cover */
+  .cover { text-align: left; padding: 26mm 0 0; page-break-after: always; }
+  .cover .kicker { text-transform: uppercase; letter-spacing: 3px; font-size: 8.5pt; color: #5d6673; }
+  .cover h1 { font-size: 30pt; margin: 6px 0 2px; }
+  .cover h1 .accent { color: #0e8f80; }
+  .cover .sub { font-size: 13pt; color: #333a45; margin: 0 0 22px; }
+  .cover .lede { font-size: 10.5pt; color: #333a45; max-width: 118mm; }
+  .cover .box { margin-top: 16mm; border: 1px solid #d7dce3; border-left: 4px solid #0e8f80; border-radius: 4px; padding: 12px 16px; background: #f7f9fa; }
+  .cover .box b { display: block; margin-bottom: 4px; }
+  .cover .meta { margin-top: 14mm; font-size: 9pt; color: #6b7280; }
+  .toc { margin-top: 12mm; }
+  .toc h3 { font-size: 10pt; text-transform: uppercase; letter-spacing: 1.5px; color: #5d6673; margin: 0 0 8px; }
+  .toc ol { margin: 0; padding-left: 20px; font-size: 9.6pt; column-count: 2; column-gap: 12mm; }
+  .toc li { margin: 2px 0; break-inside: avoid; }
+
+  h1.sec {
+    font-size: 15pt; margin: 0 0 10px; padding-bottom: 6px;
+    border-bottom: 2px solid #0e8f80;
+  }
+  section { page-break-before: always; }
+  section.cont { page-break-before: auto; }
+  h2 { font-size: 11.5pt; margin: 16px 0 6px; color: #10221f; }
+  h3 { font-size: 10.4pt; margin: 13px 0 4px; }
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0; padding-left: 20px; }
+  li { margin: 3px 0; }
+  code {
+    font-family: "Consolas", ui-monospace, monospace; font-size: 9.2pt;
+    background: #eef1f4; padding: 1px 4px; border-radius: 3px; color: #0b3f39;
+  }
+  pre {
+    font-family: "Consolas", ui-monospace, monospace; font-size: 8.6pt; line-height: 1.42;
+    background: #f4f6f8; border: 1px solid #dfe4ea; border-radius: 4px;
+    padding: 9px 11px; overflow: hidden; white-space: pre-wrap; page-break-inside: avoid;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+  table { width: 100%; border-collapse: collapse; margin: 9px 0; font-size: 9.3pt; page-break-inside: avoid; }
+  th { text-align: left; background: #eef1f4; border-bottom: 1.5px solid #c8cfd8; padding: 6px 8px; font-size: 8.6pt; text-transform: uppercase; letter-spacing: .6px; color: #3d4653; }
+  td { border-bottom: 1px solid #e4e8ed; padding: 6px 8px; vertical-align: top; }
+  td:first-child { white-space: nowrap; }
+  table.wrapfirst td:first-child { white-space: normal; }
+
+  .note, .warn, .tip {
+    border-radius: 4px; padding: 9px 12px; margin: 10px 0; font-size: 9.5pt; page-break-inside: avoid;
+  }
+  .note { background: #f0f6f5; border-left: 4px solid #0e8f80; }
+  .warn { background: #fdf3f2; border-left: 4px solid #c0392b; }
+  .tip  { background: #f7f8fa; border-left: 4px solid #8b95a3; }
+  .warn b, .note b { color: inherit; }
+
+  .big-step { background: #0e8f80; color: #fff; border-radius: 5px; padding: 11px 15px; margin: 11px 0; font-size: 11pt; font-weight: 600; text-align: center; }
+  .big-step code { background: rgba(255,255,255,.2); color: #fff; }
+
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+  .card { border: 1px solid #dfe4ea; border-radius: 4px; padding: 9px 12px; font-size: 9.4pt; page-break-inside: avoid; }
+  .card b { display: block; margin-bottom: 3px; }
+
+  .qr { border: 2px solid #0e8f80; border-radius: 5px; padding: 14px 18px; background: #f7fbfa; page-break-inside: avoid; }
+  .qr ol { font-size: 10.4pt; }
+  .footerline { margin-top: 14px; padding-top: 8px; border-top: 1px solid #e4e8ed; font-size: 8.6pt; color: #6b7280; }
+  a { color: #0b6f63; text-decoration: none; }
+  .chk { list-style: none; padding-left: 0; }
+  .chk li::before { content: "☐  "; color: #0e8f80; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="kicker">The Racing Club</div>
+  <h1>TRC<span class="accent">rating</span></h1>
+  <p class="sub">Operations Manual</p>
+  <p class="lede">Everything you need to run the rating system: adding drivers, entering
+  race results, and publishing to Discord and the website.</p>
+
+  <div class="box">
+    <b>You do not need to be a programmer.</b>
+    The routine work is: type results into a Google Sheet, then click one menu item.
+    Everything else happens automatically.
+  </div>
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li>What this system does</li>
+      <li>Access you need</li>
+      <li>The two ratings</li>
+      <li>The Sheet, tab by tab</li>
+      <li>Adding a new driver</li>
+      <li>Entering race results</li>
+      <li>Publishing (the one click)</li>
+      <li>Troubleshooting</li>
+      <li>Periodic maintenance</li>
+      <li>Rules and pitfalls</li>
+      <li>Reference</li>
+      <li>Quick reference card</li>
+    </ol>
+  </div>
+
+  <p class="meta">Live website: theracingclub.online</p>
+</div>
+
+<!-- ============ 1 ============ -->
+<section>
+<h1 class="sec">1 · What this system does</h1>
+
+<p>Every race result is typed into a Google Sheet. A script inside the Sheet calculates two
+ratings per driver. One click then publishes the ranking to Discord <b>and</b> rebuilds the
+public website.</p>
+
+<pre><code>   Google Sheet  ─────────►  Apps Script  ─────────►  GitHub  ─────────►  Discord
+   (you type here)           (calculates)            (automation)      +  Website
+                                                                          theracingclub.online</code></pre>
+
+<h2>The three moving parts</h2>
+<table class="wrapfirst">
+  <tr><th>Part</th><th>What it is</th><th>What it does</th></tr>
+  <tr><td><b>Google Sheet</b></td><td><code>TRCrating</code> spreadsheet</td><td>Holds all drivers and every race result. The single source of truth.</td></tr>
+  <tr><td><b>Apps Script</b></td><td>Code inside the Sheet (Extensions → Apps Script)</td><td>Calculates the ratings, then triggers GitHub.</td></tr>
+  <tr><td><b>GitHub</b></td><td>Repo <code>simracing-ranking-bot</code></td><td>Posts the ranking to Discord and rebuilds the website. Runs by itself.</td></tr>
+</table>
+
+<p><b>Live website:</b> <a href="https://theracingclub.online/">https://theracingclub.online/</a></p>
+</section>
+
+<!-- ============ 2 ============ -->
+<section>
+<h1 class="sec">2 · Access you need</h1>
+
+<p>Before taking over, make sure you have:</p>
+<ul class="chk">
+  <li><b>Edit access to the Google Sheet</b> — ask the current owner to share it with you as Editor</li>
+  <li>Access to the <b>Discord channel</b> where the ranking is posted, to check that posts arrive</li>
+  <li><i>(Optional, only for troubleshooting)</i> access to the <b>GitHub repository</b></li>
+</ul>
+
+<p>You do <b>not</b> need GitHub access for normal daily work. The automation is already
+configured and runs on its own.</p>
+
+<div class="note">
+<b>Note on credentials.</b> A GitHub access token is stored inside the Apps Script
+(Project Settings → Script Properties → <code>GITHUB_TOKEN</code>). You never need to touch
+it, except when it expires — see section 9, <i>Periodic maintenance</i>.
+</div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section>
+<h1 class="sec">3 · The two ratings</h1>
+<p>So you can answer driver questions.</p>
+
+<table>
+  <tr><th></th><th>LPR — League Performance Rating</th><th>DSR — Driver Skill Rating</th></tr>
+  <tr><td><b>What it is</b></td><td>Sum of points from the <b>last 12 months</b></td><td>Elo-style skill rating</td></tr>
+  <tr><td><b>Rewards</b></td><td><b>Activity</b> — racing often</td><td><b>Skill</b> — beating the field</td></tr>
+  <tr><td><b>Starts at</b></td><td>0</td><td>1000</td></tr>
+  <tr><td><b>Goes down when</b></td><td>You stop racing (old races age out)</td><td>You lose to lower-rated drivers</td></tr>
+</table>
+
+<h2>How DSR moves</h2>
+<p>Each race, a driver gains <code>points × 0.5</code>, plus a bonus or malus for upsets:
+<b>+2</b> for every higher-rated driver they finish ahead of, <b>−2</b> for every
+lower-rated driver that finishes ahead of them.</p>
+
+<h2>Scoring</h2>
+<p>Position points (P1 = 28, P2 = 23, P3 = 20 … P16 = 1) are multiplied by the tier weight:
+<b>A 100% · B 80% · C 60% · Cup 50% · 3x3 25%</b>.</p>
+
+<div class="warn">
+<b>Do not change these numbers.</b> The scoring is established and popular with the drivers.
+Ratings are recalculated from the entire history every time, so a change would
+retroactively rewrite every driver's past. See section 10.
+</div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section>
+<h1 class="sec">4 · The Sheet, tab by tab</h1>
+
+<table class="wrapfirst">
+  <tr><th>Tab</th><th>Purpose</th><th>Do you edit it?</th></tr>
+  <tr><td><b>Drivers</b></td><td>Master list of drivers</td><td>YES — add new drivers here</td></tr>
+  <tr><td><b>Events</b></td><td>Every race result; one row per driver per race</td><td>YES — your main workspace</td></tr>
+  <tr><td><b>Ranking</b></td><td>Current standings</td><td>NO — auto-generated, overwritten on every recalculation</td></tr>
+  <tr><td><b>Points</b></td><td>Configuration: point tables, tier weights, rating parameters</td><td>NO — leave alone</td></tr>
+  <tr><td><b>Instructions</b></td><td>OUTDATED — describes an old system</td><td>NO — ignore or delete</td></tr>
+</table>
+
+<h2>The Events tab columns</h2>
+<table>
+  <tr><th>Col</th><th>Name</th><th>Who fills it</th></tr>
+  <tr><td>A</td><td><code>Date</code></td><td><b>You</b> — format <code>YYYY-MM-DD</code></td></tr>
+  <tr><td>B</td><td><code>Event_Name</code></td><td><b>You</b></td></tr>
+  <tr><td>C</td><td><code>Driver</code></td><td><b>You</b> — use the dropdown</td></tr>
+  <tr><td>D</td><td><code>Tier</code></td><td><b>You</b> — <code>A</code>, <code>B</code>, <code>C</code>, <code>Cup</code> or <code>3x3</code></td></tr>
+  <tr><td>E</td><td><code>Promotion_demotion</code></td><td>Optional, unused by the calculation</td></tr>
+  <tr><td>F</td><td><code>Quali</code></td><td>Optional, <b>not used</b> in scoring</td></tr>
+  <tr><td>G</td><td><code>Position</code></td><td><b>You</b> — finishing position (1, 2, 3 …)</td></tr>
+  <tr><td>H</td><td><code>RacePoints</code></td><td>Automatic (sheet formula)</td></tr>
+  <tr><td>I</td><td><code>FINAL_POINTS</code></td><td>Automatic (RacePoints × tier weight)</td></tr>
+  <tr><td>J–O</td><td><code>Rating_before</code> … <code>EffectivePoints</code></td><td>Automatic — written by the script on recalculation</td></tr>
+</table>
+
+<div class="note">
+<b>In short: you only fill A, B, C, D and G.</b> Everything from column H onward calculates
+itself.
+</div>
+
+<div class="tip">
+If you copy a new row, make sure the formulas in H and I come along. After entering Position
+and Tier, those two cells should populate immediately. If they stay empty, copy the formulas
+down from the row above.
+</div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section>
+<h1 class="sec">5 · Adding a new driver</h1>
+<p>Do this <b>before</b> entering their first result.</p>
+
+<ol>
+  <li>Open the <b>Drivers</b> tab.</li>
+  <li>Add a new row at the bottom:
+    <ul>
+      <li><b>Driver</b> — their exact name. This must match the spelling used in Events
+      <i>exactly</i> (see section 10, most common mistake).</li>
+      <li><b>Join_Date</b> — the date they joined.</li>
+      <li><b>Country</b> — English country name, e.g. <code>USA</code>, <code>UK</code>,
+      <code>Germany</code>, <code>South Africa</code>. Used for the flag on the website. Optional.</li>
+      <li><b>Racingnumber</b> — their number, e.g. <code>34</code>. Optional.</li>
+    </ul>
+  </li>
+  <li>Done. The driver now appears in the Events dropdown.</li>
+</ol>
+
+<p><b>Country and number are independent and optional.</b> A driver with a country but no
+number gets a flag and no number, and vice versa. You can fill these in later at any time.</p>
+
+<div class="tip">
+If a country you enter doesn't produce a flag on the website, that country name isn't in the
+lookup table yet — see section 8.
+</div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section>
+<h1 class="sec">6 · Entering race results</h1>
+<p>For each race, add <b>one row per driver</b> in the <b>Events</b> tab.</p>
+
+<ol>
+  <li>Open the <b>Events</b> tab and scroll to the first empty row at the bottom.</li>
+  <li>For every driver who took part, fill in the five fields below.</li>
+  <li>Check that <code>RacePoints</code> (H) and <code>FINAL_POINTS</code> (I) filled themselves in.</li>
+  <li>When all rows for the race are entered, publish — see section 7.</li>
+</ol>
+
+<table>
+  <tr><th>Column</th><th>Example</th><th>Notes</th></tr>
+  <tr><td><code>Date</code></td><td><code>2026-07-25</code></td><td>Always <code>YYYY-MM-DD</code></td></tr>
+  <tr><td><code>Event_Name</code></td><td><code>CS S6 - Red Bull Ring - Tier B</code></td><td>See naming rule below</td></tr>
+  <tr><td><code>Driver</code></td><td><i>pick from dropdown</i></td><td>Never type it by hand</td></tr>
+  <tr><td><code>Tier</code></td><td><code>B</code></td><td>Exactly <code>A</code>, <code>B</code>, <code>C</code>, <code>Cup</code> or <code>3x3</code></td></tr>
+  <tr><td><code>Position</code></td><td><code>2</code></td><td>Finishing position</td></tr>
+</table>
+
+<h2>Event naming rule (important)</h2>
+<p>A race is identified by the combination <b>Date + Event_Name + Tier</b>. Everyone sharing
+those three values is treated as being in the same race — that is how the upset bonus and
+malus are calculated.</p>
+
+<p><b>Do:</b> give each race a name that makes it unique, including region, round or track
+where relevant — for example <code>Miata Mondays - Watkins Glen - EU</code> and
+<code>Miata Mondays - Watkins Glen - Americas</code>.</p>
+
+<div class="warn">
+<b>Don't</b> give two <i>different</i> races on the same day in the same tier the same name.
+They would be merged into one race and the ratings would be wrong.
+</div>
+
+<h2>Drivers who didn't finish or didn't start</h2>
+<p>Leave <code>Position</code> <b>empty</b> or enter <code>0</code>. Those rows score zero
+points and are excluded from win and podium counts, average finish, and the Giant Killer
+statistic. They do no harm.</p>
+</section>
+
+<!-- ============ 7 ============ -->
+<section>
+<h1 class="sec">7 · Publishing (the one click)</h1>
+<p>After all results are entered:</p>
+
+<div class="big-step">Google Sheet menu → <code>Racing</code> → <code>Ratings &amp; Ranking neu berechnen</code></div>
+
+<p>That single click does everything:</p>
+<ol>
+  <li>Recalculates all ratings and fills Events columns J–O</li>
+  <li>Rewrites the <b>Ranking</b> tab</li>
+  <li>Triggers GitHub, which then
+    <ul>
+      <li>posts the Top-100 ranking to <b>Discord</b>, and</li>
+      <li>rebuilds the <b>website</b>: rankings, driver profiles, leaderboards, events, stats</li>
+    </ul>
+  </li>
+</ol>
+
+<p><b>Timing.</b> The calculation takes a few seconds. A toast message appears at the bottom
+of the Sheet: <i>"GitHub angestoßen – Discord &amp; Webapp werden in ~1 Min aktualisiert."</i>
+Discord and the website follow within roughly one minute.</p>
+
+<h2>Verifying it worked</h2>
+<ol>
+  <li><b>Discord</b> — the ranking post should appear as six messages: LPR header,
+  LPR 1–50, LPR 51–100, DSR header, DSR 1–50, DSR 51–100.</li>
+  <li><b>Website</b> — open theracingclub.online and press <b>Ctrl+F5</b> (hard reload).
+  The header line shows the driver count, race count and <i>last update</i> date.</li>
+</ol>
+
+<p>If either is missing, see section 8.</p>
+</section>
+
+<!-- ============ 8 ============ -->
+<section>
+<h1 class="sec">8 · Troubleshooting</h1>
+
+<h2>The website shows a driver with DSR 0, or numbers look wrong</h2>
+<p><b>Cause:</b> results were entered but the recalculation hasn't run yet, so the script
+hasn't filled in the ratings.<br>
+<b>Fix:</b> run <code>Racing → Ratings &amp; Ranking neu berechnen</code>.</p>
+
+<h2>Nothing was posted to Discord, and no toast appeared</h2>
+<ol>
+  <li>Did you actually click the menu item, and did the calculation finish?</li>
+  <li>Check the Apps Script log: <b>Extensions → Apps Script → Executions</b> in the left
+  sidebar. Open the latest <code>recalcRatingsAndRanking</code> run and read the messages.</li>
+  <li>If you see an error mentioning HTTP <b>401</b> or <b>403</b>, the GitHub token has
+  expired — see section 9.</li>
+</ol>
+
+<h2>The recalculation ran, but Discord and the website didn't update</h2>
+<p>The GitHub side may have failed. Open the repository, go to the <b>Actions</b> tab and
+look at the newest run ("Post Ranking to Discord"). A red cross means it failed; click it to
+read the log. <b>Quick workaround:</b> on that page click <b>Run workflow</b> to start it
+manually.</p>
+
+<h2>A driver appears twice on the website</h2>
+<p>Their name is spelled two different ways in the Events tab — for example a trailing
+space, or <code>TRC_Name</code> versus <code>TRC Name</code>. Correct the rows so all use
+the identical spelling, then recalculate.</p>
+
+<h2>A driver's flag doesn't show</h2>
+<p>That country name isn't in the lookup table yet. This needs a small code change — pass
+the country name on to whoever maintains the code (section 11). Everything else keeps
+working normally in the meantime.</p>
+
+<h2>Some drivers' ratings look different after editing old rows</h2>
+<p>Ratings are always recalculated from the full history, so correcting an old row is fine —
+but it can slightly shift later ratings for the drivers involved. That is expected and
+correct behaviour, not a bug.</p>
+</section>
+
+<!-- ============ 9 ============ -->
+<section>
+<h1 class="sec">9 · Periodic maintenance</h1>
+
+<p><b>This is the only recurring task.</b> A GitHub access token is stored in the Apps Script
+and expires, roughly yearly. When it does, the recalculation still works but Discord and the
+website stop updating, and you will see an HTTP 401 or 403 error in the Apps Script log.</p>
+
+<h2>Renewing the token</h2>
+<p>Requires GitHub access to the repository owner's account.</p>
+<ol>
+  <li>On GitHub: <b>Settings → Developer settings → Personal access tokens →
+  Fine-grained tokens → Generate new token</b>
+    <ul>
+      <li>Repository access: <b>Only select repositories</b> → <code>simracing-ranking-bot</code></li>
+      <li>Permissions → Repository permissions → <b>Contents: Read and write</b>
+      (Metadata: Read is added automatically — leave it)</li>
+      <li>Set an expiry date, generate the token, and copy it</li>
+    </ul>
+  </li>
+  <li>In the Apps Script editor, add this function at the bottom, paste the token in, then
+  select <code>setTokenOnce</code> in the function dropdown and press <b>Run</b>:
+<pre><code>function setTokenOnce() {
+  PropertiesService.getScriptProperties()
+    .setProperty('GITHUB_TOKEN', 'PASTE_TOKEN_HERE');
+  Logger.log('GITHUB_TOKEN saved.');
+}</code></pre>
+  </li>
+  <li><b>Remove the token from the code again</b> — replace it with the placeholder or
+  delete the function — and save. The token now lives safely in Script Properties.</li>
+</ol>
+
+<div class="warn">
+Do <b>not</b> put the token into the Sheet itself — the Sheet is publicly readable by link.
+The Script Properties editor in the Google UI has proven unreliable; use the function above.
+</div>
+</section>
+
+<!-- ============ 10 ============ -->
+<section>
+<h1 class="sec">10 · Rules and pitfalls</h1>
+<p>Please read this section once.</p>
+
+<div class="card-grid">
+  <div class="card"><b>Never change the scoring or rating parameters</b>
+  (Points tab, or the calculation code). Ratings are recalculated from the entire history
+  every time, so a change rewrites every driver's past.</div>
+
+  <div class="card"><b>Driver names are the key that links everything.</b>
+  Always pick drivers from the dropdown in Events. A typo creates a "new" driver with an
+  empty history.</div>
+
+  <div class="card"><b>Keep each race uniquely named</b>
+  (Date + Event_Name + Tier). Two different same-day, same-tier races must not share a name.</div>
+
+  <div class="card"><b>Don't edit the Ranking tab.</b>
+  It is overwritten on every recalculation.</div>
+
+  <div class="card"><b>The Sheet is publicly readable by link.</b>
+  That is required for the website to read the data. Never put private information in any tab
+  — no real names, emails or private notes — and never store passwords, tokens or webhook
+  URLs in it.</div>
+
+  <div class="card"><b>The Instructions tab is outdated.</b>
+  It describes an older template system that no longer matches reality. Ignore it — this
+  manual replaces it. It can safely be deleted.</div>
+</div>
+
+<h2>Renaming events retroactively</h2>
+<p>This is possible, but be careful. Renaming only the event names is safe <i>as long as
+each race stays uniquely identified</i>. If two different same-day, same-tier races end up
+sharing a name, they merge and the ratings change.</p>
+</section>
+
+<!-- ============ 11 ============ -->
+<section>
+<h1 class="sec">11 · Reference</h1>
+
+<table class="wrapfirst">
+  <tr><td><b>Google Sheet</b></td><td><code>TRCrating</code> — ask the owner for the link</td></tr>
+  <tr><td><b>Website</b></td><td>https://theracingclub.online/</td></tr>
+  <tr><td><b>GitHub repo</b></td><td>github.com/floriankocourek-dev/simracing-ranking-bot</td></tr>
+  <tr><td><b>Manual trigger</b></td><td>repo → Actions → "Post Ranking to Discord" → Run workflow</td></tr>
+</table>
+
+<h2>Configuration values</h2>
+<p>From the Points tab — for reference only, do not change.</p>
+<pre><code>START_RATING     1000     Starting DSR for every new driver
+BONUS_PER_UPSET  2        DSR bonus per higher-rated driver beaten
+MALUS_PER_BAD    2        DSR penalty per lower-rated driver that beat you
+RATING_FACTOR    0.5      Share of points that converts into DSR
+
+Position points  P1=28  P2=23  P3=20  P4=18  P5=16  P6=14  P7=12  P8=10
+                 P9=8   P10=7  P11=6  P12=5  P13=4  P14=3  P15=2  P16=1
+
+Tier weights     A=100%   B=80%   C=60%   Cup=50%   3x3=25%</code></pre>
+
+<h2>Where the code lives</h2>
+<p>For a technical helper.</p>
+<table class="wrapfirst">
+  <tr><td>Rating calculation</td><td>Apps Script inside the Sheet (<code>recalcRatingsAndRanking</code>)</td></tr>
+  <tr><td>Discord posting</td><td><code>post-ranking.mjs</code> in the GitHub repo</td></tr>
+  <tr><td>Website data generation</td><td><code>build-data.mjs</code> in the GitHub repo</td></tr>
+  <tr><td>Website pages</td><td><code>docs/</code> folder in the GitHub repo</td></tr>
+  <tr><td>Technical notes</td><td><code>plans/</code> folder in the GitHub repo</td></tr>
+</table>
+</section>
+
+<!-- ============ 12 ============ -->
+<section>
+<h1 class="sec">12 · Quick reference card</h1>
+
+<div class="qr">
+  <p style="margin-top:0"><b>Every race weekend:</b></p>
+  <ol>
+    <li>New drivers? Add them to the <b>Drivers</b> tab first.</li>
+    <li>Enter results in <b>Events</b>: <code>Date</code>, <code>Event_Name</code>,
+    <code>Driver</code>, <code>Tier</code>, <code>Position</code>.</li>
+    <li>Click <b>Racing → Ratings &amp; Ranking neu berechnen</b>.</li>
+    <li>Check Discord, and the website after a hard reload (Ctrl+F5).</li>
+  </ol>
+  <p style="margin-bottom:0"><b>That's the whole job.</b></p>
+</div>
+
+<h2>If something looks wrong</h2>
+<table class="wrapfirst">
+  <tr><th>Symptom</th><th>Most likely fix</th></tr>
+  <tr><td>Driver shows DSR 0</td><td>Run the recalculation (section 8)</td></tr>
+  <tr><td>No Discord post</td><td>Check Apps Script → Executions log (section 8)</td></tr>
+  <tr><td>Website not updating</td><td>GitHub → Actions → Run workflow (section 8)</td></tr>
+  <tr><td>Driver listed twice</td><td>Name spelled two ways in Events (section 8)</td></tr>
+  <tr><td>HTTP 401 / 403 error</td><td>GitHub token expired — renew it (section 9)</td></tr>
+</table>
+
+<div class="footerline">
+TRCrating Operations Manual — THE RACING CLUB · theracingclub.online
+</div>
+</section>
+
+</body>
+</html>

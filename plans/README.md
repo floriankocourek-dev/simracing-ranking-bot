@@ -35,3 +35,14 @@ Status values: `Planned` · `In progress` · `Done` · `Parked`
 - V2 webapp: head-to-head comparison, league timeline (Top-N highlight), more badges.
 - Optional: scheduled (cron) auto-update in addition to the Sheet trigger.
 - Optional: disconnect GoDaddy Website Builder from the domain (cleanup, not urgent).
+
+## Operations manual (PDF)
+`../OPERATIONS.md` is the markdown source of truth. `operations-manual-print.html` is the
+print-styled version used to generate the handover PDF. To regenerate the PDF:
+
+```
+chrome --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="TRCrating-Operations-Manual.pdf" \
+  "file:///<path>/plans/operations-manual-print.html"
+```
+Keep both files in sync when the manual changes.
