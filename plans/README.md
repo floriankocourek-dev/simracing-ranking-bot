@@ -23,6 +23,7 @@ Status values: `Planned` · `In progress` · `Done` · `Parked`
 
 | Feature | Status | Plan |
 |---|---|---|
+| **Operations manual (for whoever runs the league)** | — | [../OPERATIONS.md](../OPERATIONS.md) |
 | Architecture & invariants (read first) | — | [architecture.md](architecture.md) |
 | Discord posting (GitHub runner) | Done | [features/discord-posting.md](features/discord-posting.md) |
 | Webapp data pipeline (`build-data.mjs`) | Done | [features/data-pipeline.md](features/data-pipeline.md) |
