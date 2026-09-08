@@ -3,15 +3,15 @@
     "Driver": "TRC_3GGM4N",
     "lprPos": 1,
     "dsrPos": 22,
-    "lpr": 1192.9,
-    "dsr": 1177.08
+    "lpr": 1198.9,
+    "dsr": 1176.08
   },
   {
     "Driver": "TRC_Sherkain",
     "lprPos": 2,
     "dsrPos": 2,
-    "lpr": 1118.25,
-    "dsr": 1290
+    "lpr": 1132.25,
+    "dsr": 1297
   },
   {
     "Driver": "Shade",
@@ -24,29 +24,29 @@
     "Driver": "TRC_Art Vandelay",
     "lprPos": 4,
     "dsrPos": 15,
-    "lpr": 998.1,
-    "dsr": 1201.05
-  },
-  {
-    "Driver": "Some Guy",
-    "lprPos": 5,
-    "dsrPos": 7,
-    "lpr": 870.4,
-    "dsr": 1222.58
+    "lpr": 1006.1,
+    "dsr": 1203.05
   },
   {
     "Driver": "TRC_Shuck",
-    "lprPos": 6,
+    "lprPos": 5,
     "dsrPos": 9,
-    "lpr": 863.65,
-    "dsr": 1217.33
+    "lpr": 895.15,
+    "dsr": 1227.08
+  },
+  {
+    "Driver": "Some Guy",
+    "lprPos": 6,
+    "dsrPos": 8,
+    "lpr": 881.9,
+    "dsr": 1228.33
   },
   {
     "Driver": "TRC@SAF1",
     "lprPos": 7,
-    "dsrPos": 13,
-    "lpr": 771.4,
-    "dsr": 1210.95
+    "dsrPos": 6,
+    "lpr": 799.4,
+    "dsr": 1232.95
   },
   {
     "Driver": "garnet_cobra YT",
@@ -58,14 +58,14 @@
   {
     "Driver": "TRC Rude",
     "lprPos": 9,
-    "dsrPos": 10,
+    "dsrPos": 12,
     "lpr": 581.75,
     "dsr": 1216.88
   },
   {
     "Driver": "TRC Z-DRUMMER",
     "lprPos": 10,
-    "dsrPos": 26,
+    "dsrPos": 28,
     "lpr": 567.95,
     "dsr": 1166.98
   },
@@ -73,27 +73,27 @@
     "Driver": "P. Zebra",
     "lprPos": 11,
     "dsrPos": 41,
-    "lpr": 506.85,
-    "dsr": 1133.43
+    "lpr": 511.85,
+    "dsr": 1131.93
+  },
+  {
+    "Driver": "Ian",
+    "lprPos": 12,
+    "dsrPos": 4,
+    "lpr": 508.4,
+    "dsr": 1236.2
   },
   {
     "Driver": "Jay",
-    "lprPos": 12,
+    "lprPos": 13,
     "dsrPos": 36,
     "lpr": 505.5,
     "dsr": 1141
   },
   {
-    "Driver": "Ian",
-    "lprPos": 13,
-    "dsrPos": 4,
-    "lpr": 499.4,
-    "dsr": 1237.7
-  },
-  {
     "Driver": "Heloskickass_VR",
     "lprPos": 14,
-    "dsrPos": 12,
+    "dsrPos": 13,
     "lpr": 497.75,
     "dsr": 1214.88
   },
@@ -107,7 +107,7 @@
   {
     "Driver": "TRC_Sully",
     "lprPos": 16,
-    "dsrPos": 5,
+    "dsrPos": 7,
     "lpr": 474.45,
     "dsr": 1229.48
   },
@@ -122,7 +122,7 @@
     "Driver": "JFass",
     "lprPos": 18,
     "dsrPos": 18,
-    "lpr": 419,
+    "lpr": 427,
     "dsr": 1193.5
   },
   {
@@ -161,121 +161,121 @@
     "dsr": 1184.8
   },
   {
-    "Driver": "Shadowsboxing",
+    "Driver": "Chip",
     "lprPos": 24,
-    "dsrPos": 24,
+    "dsrPos": 5,
+    "lpr": 338.25,
+    "dsr": 1235.13
+  },
+  {
+    "Driver": "Shadowsboxing",
+    "lprPos": 25,
+    "dsrPos": 26,
     "lpr": 333,
     "dsr": 1170.5
   },
   {
     "Driver": "TRC_Floko",
-    "lprPos": 25,
-    "dsrPos": 43,
+    "lprPos": 26,
+    "dsrPos": 44,
     "lpr": 327,
     "dsr": 1126.13
   },
   {
     "Driver": "TRC_Apoc585",
-    "lprPos": 26,
-    "dsrPos": 28,
+    "lprPos": 27,
+    "dsrPos": 29,
     "lpr": 326.75,
     "dsr": 1160.88
   },
   {
-    "Driver": "Chip",
-    "lprPos": 27,
-    "dsrPos": 6,
-    "lpr": 324.25,
-    "dsr": 1228.13
-  },
-  {
     "Driver": "TRC_VKris95",
     "lprPos": 28,
-    "dsrPos": 8,
+    "dsrPos": 11,
     "lpr": 324,
     "dsr": 1218
   },
   {
     "Driver": "TRCLap-Em Racing",
     "lprPos": 29,
-    "dsrPos": 74,
+    "dsrPos": 75,
     "lpr": 322.7,
     "dsr": 1055.73
   },
   {
     "Driver": "Nuni",
     "lprPos": 30,
-    "dsrPos": 25,
+    "dsrPos": 27,
     "lpr": 316.55,
     "dsr": 1170.4
   },
   {
     "Driver": "Juancho",
     "lprPos": 31,
-    "dsrPos": 35,
-    "lpr": 303.65,
-    "dsr": 1145.83
+    "dsrPos": 33,
+    "lpr": 312.65,
+    "dsr": 1150.33
+  },
+  {
+    "Driver": "TRC_Mik_ VY",
+    "lprPos": 32,
+    "dsrPos": 67,
+    "lpr": 295.05,
+    "dsr": 1063.53
   },
   {
     "Driver": "cje2148",
-    "lprPos": 32,
+    "lprPos": 33,
     "dsrPos": 17,
     "lpr": 287,
     "dsr": 1197.5
   },
   {
-    "Driver": "TRC_Mik_ VY",
-    "lprPos": 33,
-    "dsrPos": 70,
-    "lpr": 281.05,
-    "dsr": 1060.53
+    "Driver": "TANNED-PumPum",
+    "lprPos": 34,
+    "dsrPos": 10,
+    "lpr": 266,
+    "dsr": 1223
+  },
+  {
+    "Driver": "M. Alkafaji",
+    "lprPos": 35,
+    "dsrPos": 25,
+    "lpr": 261.3,
+    "dsr": 1170.65
   },
   {
     "Driver": "TRC_SkArthur",
-    "lprPos": 34,
+    "lprPos": 36,
     "dsrPos": 20,
     "lpr": 254.9,
     "dsr": 1183.45
   },
   {
     "Driver": "Sauce_Sangoma 23",
-    "lprPos": 35,
+    "lprPos": 37,
     "dsrPos": 49,
     "lpr": 252.05,
     "dsr": 1099.03
   },
   {
-    "Driver": "M. Alkafaji",
-    "lprPos": 36,
-    "dsrPos": 27,
-    "lpr": 251.3,
-    "dsr": 1165.65
-  },
-  {
-    "Driver": "TANNED-PumPum",
-    "lprPos": 37,
-    "dsrPos": 11,
-    "lpr": 246.5,
-    "dsr": 1215.25
-  },
-  {
     "Driver": "TRC Raiden",
     "lprPos": 38,
-    "dsrPos": 23,
+    "dsrPos": 24,
     "lpr": 239.1,
     "dsr": 1173.55
   },
   {
     "Driver": "Johnny Law",
     "lprPos": 39,
-    "dsrPos": 44,
+    "dsrPos": 45,
     "lpr": 235,
     "dsr": 1123.5
   },
   {
     "Driver": "Jasonkhan",
     "lprPos": 40,
-    "dsrPos": 58,
+    "dsrPos": 59,
     "lpr": 233.5,
     "dsr": 1080.75
   },
@@ -311,99 +311,99 @@
     "Driver": "audrey",
     "lprPos": 45,
     "dsrPos": 31,
-    "lpr": 191.9,
-    "dsr": 1153.95
+    "lpr": 196.9,
+    "dsr": 1154.45
   },
   {
     "Driver": "DriverX_TRC",
     "lprPos": 46,
-    "dsrPos": 33,
+    "dsrPos": 34,
     "lpr": 185,
     "dsr": 1146.5
   },
   {
-    "Driver": "Trust",
+    "Driver": "Cleef",
     "lprPos": 47,
+    "dsrPos": 84,
+    "lpr": 163.95,
+    "dsr": 1043.98
+  },
+  {
+    "Driver": "Trust",
+    "lprPos": 48,
     "dsrPos": 64,
     "lpr": 156,
     "dsr": 1072
   },
   {
-    "Driver": "Cleef",
-    "lprPos": 48,
-    "dsrPos": 88,
-    "lpr": 152.45,
-    "dsr": 1040.23
+    "Driver": "Big Daddy Korn",
+    "lprPos": 49,
+    "dsrPos": 56,
+    "lpr": 152.4,
+    "dsr": 1088.2
+  },
+  {
+    "Driver": "Dj coconut",
+    "lprPos": 50,
+    "dsrPos": 23,
+    "lpr": 147.5,
+    "dsr": 1175.75
   },
   {
     "Driver": "SirCrashalot",
-    "lprPos": 49,
+    "lprPos": 51,
     "dsrPos": 54,
     "lpr": 147.2,
     "dsr": 1093.6
   },
   {
     "Driver": "VV$_MikeLowrey",
-    "lprPos": 50,
-    "dsrPos": 56,
+    "lprPos": 52,
+    "dsrPos": 57,
     "lpr": 146.6,
     "dsr": 1085.3
   },
   {
+    "Driver": "GBRC-Trevor-74",
+    "lprPos": 53,
+    "dsrPos": 73,
+    "lpr": 141.65,
+    "dsr": 1056.83
+  },
+  {
     "Driver": "Daja",
-    "lprPos": 51,
-    "dsrPos": 34,
+    "lprPos": 54,
+    "dsrPos": 35,
     "lpr": 140.1,
     "dsr": 1146.05
   },
   {
     "Driver": "jhkizzle",
-    "lprPos": 52,
+    "lprPos": 55,
     "dsrPos": 39,
     "lpr": 139.5,
     "dsr": 1135.75
   },
   {
-    "Driver": "Big Daddy Korn",
-    "lprPos": 53,
-    "dsrPos": 60,
-    "lpr": 136.4,
-    "dsr": 1076.2
-  },
-  {
-    "Driver": "GBRC-Trevor-74",
-    "lprPos": 54,
-    "dsrPos": 77,
-    "lpr": 134.65,
-    "dsr": 1049.33
-  },
-  {
-    "Driver": "The Saiyan Racer",
-    "lprPos": 55,
-    "dsrPos": 38,
-    "lpr": 131,
-    "dsr": 1139.5
-  },
-  {
-    "Driver": "Dj coconut",
-    "lprPos": 56,
-    "dsrPos": 29,
-    "lpr": 128.5,
-    "dsr": 1158.25
-  },
-  {
     "Driver": "AndreiRaetsel",
-    "lprPos": 57,
-    "dsrPos": 80,
-    "lpr": 126.2,
-    "dsr": 1046.73
+    "lprPos": 56,
+    "dsrPos": 77,
+    "lpr": 133.2,
+    "dsr": 1054.23
   },
   {
     "Driver": "Bonesetter",
+    "lprPos": 57,
+    "dsrPos": 43,
+    "lpr": 133,
+    "dsr": 1126.5
+  },
+  {
+    "Driver": "The Saiyan Racer",
     "lprPos": 58,
-    "dsrPos": 45,
-    "lpr": 121.5,
-    "dsr": 1114.75
+    "dsrPos": 38,
+    "lpr": 131,
+    "dsr": 1139.5
   },
   {
     "Driver": "Cam3ron",
@@ -429,7 +429,7 @@
   {
     "Driver": "Bee",
     "lprPos": 62,
-    "dsrPos": 59,
+    "dsrPos": 60,
     "lpr": 103.5,
     "dsr": 1077.75
   },
@@ -450,7 +450,7 @@
   {
     "Driver": "Fri9875",
     "lprPos": 65,
-    "dsrPos": 57,
+    "dsrPos": 58,
     "lpr": 98.8,
     "dsr": 1081.4
   },
@@ -506,37 +506,37 @@
   {
     "Driver": "Walter",
     "lprPos": 73,
-    "dsrPos": 73,
+    "dsrPos": 74,
     "lpr": 85,
     "dsr": 1056.5
   },
   {
-    "Driver": "TheFunkyMunky",
+    "Driver": "Led Tasso",
     "lprPos": 74,
+    "dsrPos": 51,
+    "lpr": 84,
+    "dsr": 1096
+  },
+  {
+    "Driver": "TheFunkyMunky",
+    "lprPos": 75,
     "dsrPos": 62,
     "lpr": 81,
     "dsr": 1074.5
   },
   {
     "Driver": "Browski",
-    "lprPos": 75,
+    "lprPos": 76,
     "dsrPos": 92,
     "lpr": 80.75,
     "dsr": 1036.13
   },
   {
     "Driver": "TimedTim",
-    "lprPos": 76,
+    "lprPos": 77,
     "dsrPos": 108,
     "lpr": 79.5,
     "dsr": 1023.75
-  },
-  {
-    "Driver": "Led Tasso",
-    "lprPos": 77,
-    "dsrPos": 51,
-    "lpr": 79,
-    "dsr": 1097.5
   },
   {
     "Driver": "Dom",
@@ -548,14 +548,14 @@
   {
     "Driver": "error",
     "lprPos": 79,
-    "dsrPos": 69,
+    "dsrPos": 70,
     "lpr": 71,
     "dsr": 1061.5
   },
   {
     "Driver": "Homer",
     "lprPos": 80,
-    "dsrPos": 125,
+    "dsrPos": 126,
     "lpr": 69.75,
     "dsr": 1016.5
   },
@@ -569,7 +569,7 @@
   {
     "Driver": "Shaolin Trunk",
     "lprPos": 82,
-    "dsrPos": 76,
+    "dsrPos": 78,
     "lpr": 62.8,
     "dsr": 1050.9
   },
@@ -611,21 +611,21 @@
   {
     "Driver": "IMP-",
     "lprPos": 88,
-    "dsrPos": 86,
+    "dsrPos": 87,
     "lpr": 50.6,
     "dsr": 1041.3
   },
   {
     "Driver": "HighRev",
     "lprPos": 89,
-    "dsrPos": 67,
+    "dsrPos": 68,
     "lpr": 50,
     "dsr": 1063
   },
   {
     "Driver": "Kaylan Mawa",
     "lprPos": 90,
-    "dsrPos": 68,
+    "dsrPos": 69,
     "lpr": 48,
     "dsr": 1062
   },
@@ -639,7 +639,7 @@
   {
     "Driver": "TRC Virgolini",
     "lprPos": 92,
-    "dsrPos": 75,
+    "dsrPos": 76,
     "lpr": 46.5,
     "dsr": 1055.25
   },
@@ -660,14 +660,14 @@
   {
     "Driver": "Robert Insabella",
     "lprPos": 95,
-    "dsrPos": 150,
+    "dsrPos": 152,
     "lpr": 38.8,
     "dsr": 1007.4
   },
   {
     "Driver": "Max Verspacey",
     "lprPos": 96,
-    "dsrPos": 78,
+    "dsrPos": 79,
     "lpr": 37.2,
     "dsr": 1048.6
   },
@@ -695,7 +695,7 @@
   {
     "Driver": "Brinks",
     "lprPos": 100,
-    "dsrPos": 135,
+    "dsrPos": 136,
     "lpr": 35.6,
     "dsr": 1013.8
   },
@@ -716,7 +716,7 @@
   {
     "Driver": "D. Kralj",
     "lprPos": 103,
-    "dsrPos": 87,
+    "dsrPos": 88,
     "lpr": 33,
     "dsr": 1040.5
   },
@@ -737,7 +737,7 @@
   {
     "Driver": "Gurveer",
     "lprPos": 106,
-    "dsrPos": 203,
+    "dsrPos": 202,
     "lpr": 30,
     "dsr": 999
   },
@@ -793,7 +793,7 @@
   {
     "Driver": "Abhi",
     "lprPos": 114,
-    "dsrPos": 147,
+    "dsrPos": 149,
     "lpr": 24.4,
     "dsr": 1008.2
   },
@@ -821,14 +821,14 @@
   {
     "Driver": "Old-Bean-75",
     "lprPos": 118,
-    "dsrPos": 194,
+    "dsrPos": 193,
     "lpr": 21.8,
     "dsr": 1000.9
   },
   {
     "Driver": "ravenman2222",
     "lprPos": 119,
-    "dsrPos": 79,
+    "dsrPos": 80,
     "lpr": 21.5,
     "dsr": 1046.75
   },
@@ -870,301 +870,301 @@
   {
     "Driver": "Nrock302",
     "lprPos": 125,
-    "dsrPos": 129,
+    "dsrPos": 130,
     "lpr": 18.5,
     "dsr": 1015.25
   },
   {
     "Driver": "LactoseFree",
     "lprPos": 126,
-    "dsrPos": 151,
+    "dsrPos": 153,
     "lpr": 18.5,
     "dsr": 1007.25
   },
   {
     "Driver": "Not your friend",
     "lprPos": 127,
-    "dsrPos": 130,
+    "dsrPos": 131,
     "lpr": 18,
     "dsr": 1015
   },
   {
     "Driver": "DemonStravitex",
     "lprPos": 128,
-    "dsrPos": 131,
+    "dsrPos": 132,
     "lpr": 18,
     "dsr": 1015
   },
   {
     "Driver": "Bizarro__",
     "lprPos": 129,
-    "dsrPos": 205,
+    "dsrPos": 204,
     "lpr": 16.8,
     "dsr": 996.4
   },
   {
-    "Driver": "MGR/Le'Kwera",
+    "Driver": "Zero",
     "lprPos": 130,
+    "dsrPos": 143,
+    "lpr": 16.5,
+    "dsr": 1010.25
+  },
+  {
+    "Driver": "MGR/Le'Kwera",
+    "lprPos": 131,
     "dsrPos": 107,
     "lpr": 16,
     "dsr": 1024
   },
   {
     "Driver": "TRC BlAcKFiSH6",
-    "lprPos": 131,
-    "dsrPos": 133,
+    "lprPos": 132,
+    "dsrPos": 134,
     "lpr": 16,
     "dsr": 1014
   },
   {
     "Driver": "TRC_CodyGP",
-    "lprPos": 132,
-    "dsrPos": 136,
+    "lprPos": 133,
+    "dsrPos": 137,
     "lpr": 15,
     "dsr": 1013.5
   },
   {
     "Driver": "Da Biggie Cheese",
-    "lprPos": 133,
-    "dsrPos": 85,
+    "lprPos": 134,
+    "dsrPos": 86,
     "lpr": 15,
     "dsr": 1041.5
   },
   {
     "Driver": "NRock302",
-    "lprPos": 134,
-    "dsrPos": 127,
+    "lprPos": 135,
+    "dsrPos": 128,
     "lpr": 15,
     "dsr": 1015.5
   },
   {
+    "Driver": "U2SLOW",
+    "lprPos": 136,
+    "dsrPos": 123,
+    "lpr": 15,
+    "dsr": 1017.5
+  },
+  {
     "Driver": "MacMiller",
-    "lprPos": 135,
+    "lprPos": 137,
     "dsrPos": 164,
     "lpr": 14.5,
     "dsr": 1005.25
   },
   {
     "Driver": "D.Lamber",
-    "lprPos": 136,
+    "lprPos": 138,
     "dsrPos": 115,
     "lpr": 12.8,
     "dsr": 1020.4
   },
   {
     "Driver": "TurtleTurtle",
-    "lprPos": 137,
-    "dsrPos": 141,
+    "lprPos": 139,
+    "dsrPos": 142,
     "lpr": 12.8,
     "dsr": 1010.4
   },
   {
     "Driver": "Pacman",
-    "lprPos": 138,
-    "dsrPos": 126,
+    "lprPos": 140,
+    "dsrPos": 127,
     "lpr": 12.65,
     "dsr": 1016.325
   },
   {
     "Driver": "T.Allen",
-    "lprPos": 139,
-    "dsrPos": 142,
+    "lprPos": 141,
+    "dsrPos": 144,
     "lpr": 12,
     "dsr": 1010
   },
   {
     "Driver": "gbradhopkins",
-    "lprPos": 140,
-    "dsrPos": 159,
+    "lprPos": 142,
+    "dsrPos": 160,
     "lpr": 11.2,
     "dsr": 1005.6
   },
   {
     "Driver": "Brachi",
-    "lprPos": 141,
-    "dsrPos": 123,
+    "lprPos": 143,
+    "dsrPos": 124,
     "lpr": 11,
     "dsr": 1017.5
   },
   {
     "Driver": "A. Cruz",
-    "lprPos": 142,
-    "dsrPos": 128,
+    "lprPos": 144,
+    "dsrPos": 129,
     "lpr": 11,
     "dsr": 1015.5
   },
   {
+    "Driver": "CD12176",
+    "lprPos": 145,
+    "dsrPos": 145,
+    "lpr": 11,
+    "dsr": 1009.5
+  },
+  {
     "Driver": "Sigi",
-    "lprPos": 143,
-    "dsrPos": 140,
+    "lprPos": 146,
+    "dsrPos": 141,
     "lpr": 10.5,
     "dsr": 1011.5
   },
   {
     "Driver": "TheTattedFarmer",
-    "lprPos": 144,
+    "lprPos": 147,
     "dsrPos": 111,
     "lpr": 10.5,
     "dsr": 1023.25
   },
   {
     "Driver": "Jose Aviles",
-    "lprPos": 145,
-    "dsrPos": 84,
+    "lprPos": 148,
+    "dsrPos": 85,
     "lpr": 10.25,
     "dsr": 1043.125
   },
   {
     "Driver": "Nexar-X7",
-    "lprPos": 146,
+    "lprPos": 149,
     "dsrPos": 169,
     "lpr": 9.6,
     "dsr": 1004.8
   },
   {
     "Driver": "Taleur65",
-    "lprPos": 147,
+    "lprPos": 150,
     "dsrPos": 170,
     "lpr": 9.6,
     "dsr": 1004.8
   },
   {
     "Driver": "Calanx",
-    "lprPos": 148,
-    "dsrPos": 185,
+    "lprPos": 151,
+    "dsrPos": 184,
     "lpr": 9.6,
     "dsr": 1002.8
   },
   {
     "Driver": "Guido Pitstop",
-    "lprPos": 149,
-    "dsrPos": 153,
+    "lprPos": 152,
+    "dsrPos": 155,
     "lpr": 9.5,
     "dsr": 1006.75
   },
   {
     "Driver": "___",
-    "lprPos": 150,
-    "dsrPos": 145,
+    "lprPos": 153,
+    "dsrPos": 148,
     "lpr": 9.5,
     "dsr": 1008.75
   },
   {
     "Driver": "Kion-Wuf",
-    "lprPos": 151,
+    "lprPos": 154,
     "dsrPos": 171,
     "lpr": 9,
     "dsr": 1004.5
   },
   {
-    "Driver": "U2SLOW",
-    "lprPos": 152,
-    "dsrPos": 146,
-    "lpr": 9,
-    "dsr": 1008.5
-  },
-  {
     "Driver": "FABIOLP96",
-    "lprPos": 153,
+    "lprPos": 155,
     "dsrPos": 175,
     "lpr": 8,
     "dsr": 1004
   },
   {
     "Driver": "Fish",
-    "lprPos": 154,
-    "dsrPos": 196,
+    "lprPos": 156,
+    "dsrPos": 195,
     "lpr": 8,
     "dsr": 1000
   },
   {
     "Driver": "TRC_Eracerdesign",
-    "lprPos": 155,
-    "dsrPos": 156,
-    "lpr": 8,
-    "dsr": 1006
-  },
-  {
-    "Driver": "Mitchell1",
-    "lprPos": 156,
-    "dsrPos": 138,
-    "lpr": 8,
-    "dsr": 1012
-  },
-  {
-    "Driver": "METAisLame!",
     "lprPos": 157,
-    "dsrPos": 134,
-    "lpr": 8,
-    "dsr": 1014
-  },
-  {
-    "Driver": "Thorsten_0911",
-    "lprPos": 158,
     "dsrPos": 157,
     "lpr": 8,
     "dsr": 1006
   },
   {
-    "Driver": "Zero",
-    "lprPos": 159,
-    "dsrPos": 176,
+    "Driver": "Mitchell1",
+    "lprPos": 158,
+    "dsrPos": 139,
     "lpr": 8,
-    "dsr": 1004
+    "dsr": 1012
+  },
+  {
+    "Driver": "METAisLame!",
+    "lprPos": 159,
+    "dsrPos": 135,
+    "lpr": 8,
+    "dsr": 1014
+  },
+  {
+    "Driver": "Thorsten_0911",
+    "lprPos": 160,
+    "dsrPos": 158,
+    "lpr": 8,
+    "dsr": 1006
   },
   {
     "Driver": "F. Lessi",
-    "lprPos": 160,
-    "dsrPos": 181,
+    "lprPos": 161,
+    "dsrPos": 180,
     "lpr": 7,
     "dsr": 1003.5
   },
   {
     "Driver": "Larry B",
-    "lprPos": 161,
-    "dsrPos": 160,
-    "lpr": 7,
-    "dsr": 1005.5
-  },
-  {
-    "Driver": "piece-duke",
     "lprPos": 162,
-    "dsrPos": 124,
-    "lpr": 7,
-    "dsr": 1017.5
-  },
-  {
-    "Driver": "Hikuri",
-    "lprPos": 163,
-    "dsrPos": 143,
-    "lpr": 7,
-    "dsr": 1009.5
-  },
-  {
-    "Driver": "CD12176",
-    "lprPos": 164,
     "dsrPos": 161,
     "lpr": 7,
     "dsr": 1005.5
   },
   {
+    "Driver": "piece-duke",
+    "lprPos": 163,
+    "dsrPos": 125,
+    "lpr": 7,
+    "dsr": 1017.5
+  },
+  {
+    "Driver": "Hikuri",
+    "lprPos": 164,
+    "dsrPos": 146,
+    "lpr": 7,
+    "dsr": 1009.5
+  },
+  {
     "Driver": "TRC Tidy128",
     "lprPos": 165,
-    "dsrPos": 183,
+    "dsrPos": 182,
     "lpr": 6.4,
     "dsr": 1003.2
   },
   {
     "Driver": "Bob",
     "lprPos": 166,
-    "dsrPos": 144,
+    "dsrPos": 147,
     "lpr": 6,
     "dsr": 1009
   },
   {
     "Driver": "RB-Racing",
     "lprPos": 167,
-    "dsrPos": 152,
+    "dsrPos": 154,
     "lpr": 6,
     "dsr": 1007
   },
@@ -1185,35 +1185,35 @@
   {
     "Driver": "Bexie",
     "lprPos": 170,
-    "dsrPos": 186,
+    "dsrPos": 185,
     "lpr": 5.6,
     "dsr": 1002.8
   },
   {
     "Driver": "James Arrow",
     "lprPos": 171,
-    "dsrPos": 188,
+    "dsrPos": 187,
     "lpr": 5,
     "dsr": 1002.5
   },
   {
     "Driver": "Ries",
     "lprPos": 172,
-    "dsrPos": 137,
+    "dsrPos": 138,
     "lpr": 5,
     "dsr": 1012.5
   },
   {
     "Driver": "zoe",
     "lprPos": 173,
-    "dsrPos": 132,
+    "dsrPos": 133,
     "lpr": 5,
     "dsr": 1014.5
   },
   {
     "Driver": "Mp77",
     "lprPos": 174,
-    "dsrPos": 154,
+    "dsrPos": 156,
     "lpr": 5,
     "dsr": 1006.5
   },
@@ -1225,219 +1225,212 @@
     "dsr": 1004.5
   },
   {
-    "Driver": "B",
-    "lprPos": 176,
-    "dsrPos": 155,
-    "lpr": 5,
-    "dsr": 1006.5
-  },
-  {
     "Driver": "Mando",
-    "lprPos": 177,
+    "lprPos": 176,
     "dsrPos": 173,
     "lpr": 4.8,
     "dsr": 1004.4
   },
   {
     "Driver": "Heisenberg",
-    "lprPos": 178,
-    "dsrPos": 190,
+    "lprPos": 177,
+    "dsrPos": 189,
     "lpr": 4.2,
     "dsr": 1002.1
   },
   {
     "Driver": "Das1427",
-    "lprPos": 179,
-    "dsrPos": 158,
+    "lprPos": 178,
+    "dsrPos": 159,
     "lpr": 4,
     "dsr": 1006
   },
   {
     "Driver": "Sikorsky",
-    "lprPos": 180,
-    "dsrPos": 139,
+    "lprPos": 179,
+    "dsrPos": 140,
     "lpr": 4,
     "dsr": 1012
   },
   {
     "Driver": "Jafo",
-    "lprPos": 181,
-    "dsrPos": 191,
+    "lprPos": 180,
+    "dsrPos": 190,
     "lpr": 4,
     "dsr": 1002
   },
   {
     "Driver": "L. QUIROGA",
-    "lprPos": 182,
-    "dsrPos": 148,
+    "lprPos": 181,
+    "dsrPos": 150,
     "lpr": 3.5,
     "dsr": 1007.75
   },
   {
     "Driver": "Vitto23",
+    "lprPos": 182,
+    "dsrPos": 176,
+    "lpr": 3.5,
+    "dsr": 1003.75
+  },
+  {
+    "Driver": "Cj_Garcia_Austin",
     "lprPos": 183,
     "dsrPos": 177,
     "lpr": 3.5,
     "dsr": 1003.75
   },
   {
-    "Driver": "Cj_Garcia_Austin",
+    "Driver": "Rim Reaper",
     "lprPos": 184,
     "dsrPos": 178,
     "lpr": 3.5,
     "dsr": 1003.75
   },
   {
-    "Driver": "Rim Reaper",
+    "Driver": "YankeeAmerican",
     "lprPos": 185,
     "dsrPos": 179,
     "lpr": 3.5,
     "dsr": 1003.75
   },
   {
-    "Driver": "YankeeAmerican",
-    "lprPos": 186,
-    "dsrPos": 180,
-    "lpr": 3.5,
-    "dsr": 1003.75
-  },
-  {
     "Driver": "FinPeanut",
-    "lprPos": 187,
-    "dsrPos": 202,
+    "lprPos": 186,
+    "dsrPos": 201,
     "lpr": 3,
     "dsr": 999.5
   },
   {
     "Driver": "Yannick D.",
-    "lprPos": 188,
+    "lprPos": 187,
     "dsrPos": 162,
     "lpr": 3,
     "dsr": 1005.5
   },
   {
     "Driver": "Cupati",
-    "lprPos": 189,
-    "dsrPos": 182,
+    "lprPos": 188,
+    "dsrPos": 181,
     "lpr": 3,
     "dsr": 1003.5
   },
   {
     "Driver": "L0usTiK",
-    "lprPos": 190,
-    "dsrPos": 149,
+    "lprPos": 189,
+    "dsrPos": 151,
     "lpr": 3,
     "dsr": 1007.5
   },
   {
     "Driver": "Stenn_NL",
-    "lprPos": 191,
+    "lprPos": 190,
     "dsrPos": 163,
     "lpr": 3,
     "dsr": 1005.5
   },
   {
     "Driver": "Evorye",
-    "lprPos": 192,
+    "lprPos": 191,
     "dsrPos": 165,
     "lpr": 2.5,
     "dsr": 1005.25
   },
   {
     "Driver": "Me_Vs_Sobriety",
-    "lprPos": 193,
-    "dsrPos": 192,
+    "lprPos": 192,
+    "dsrPos": 191,
     "lpr": 2.5,
     "dsr": 1001.25
   },
   {
     "Driver": "Cercas",
-    "lprPos": 194,
-    "dsrPos": 206,
+    "lprPos": 193,
+    "dsrPos": 205,
     "lpr": 2.4,
     "dsr": 993.2
   },
   {
     "Driver": "Reddog",
-    "lprPos": 195,
-    "dsrPos": 184,
+    "lprPos": 194,
+    "dsrPos": 183,
     "lpr": 2.4,
     "dsr": 1003.2
   },
   {
     "Driver": "Rumli",
-    "lprPos": 196,
-    "dsrPos": 204,
+    "lprPos": 195,
+    "dsrPos": 203,
     "lpr": 2,
     "dsr": 999
   },
   {
     "Driver": "T. Luyben",
-    "lprPos": 197,
+    "lprPos": 196,
     "dsrPos": 168,
     "lpr": 2,
     "dsr": 1005
   },
   {
     "Driver": "alepi86",
-    "lprPos": 198,
-    "dsrPos": 193,
+    "lprPos": 197,
+    "dsrPos": 192,
     "lpr": 2,
     "dsr": 1001
   },
   {
     "Driver": "Marcy",
-    "lprPos": 199,
-    "dsrPos": 187,
+    "lprPos": 198,
+    "dsrPos": 186,
     "lpr": 1.6,
     "dsr": 1002.8
   },
   {
     "Driver": "Monkey D Dragon",
-    "lprPos": 200,
-    "dsrPos": 195,
+    "lprPos": 199,
+    "dsrPos": 194,
     "lpr": 1.5,
     "dsr": 1000.75
   },
   {
     "Driver": "FRootloop24",
-    "lprPos": 201,
-    "dsrPos": 189,
+    "lprPos": 200,
+    "dsrPos": 188,
     "lpr": 1,
     "dsr": 1002.5
   },
   {
     "Driver": "DT",
+    "lprPos": 201,
+    "dsrPos": 196,
+    "lpr": 0,
+    "dsr": 1000
+  },
+  {
+    "Driver": "Metallic Knight",
     "lprPos": 202,
     "dsrPos": 197,
     "lpr": 0,
     "dsr": 1000
   },
   {
-    "Driver": "Metallic Knight",
+    "Driver": "Rickstar_UK",
     "lprPos": 203,
     "dsrPos": 198,
     "lpr": 0,
     "dsr": 1000
   },
   {
-    "Driver": "Rickstar_UK",
+    "Driver": "Colossalshaft",
     "lprPos": 204,
     "dsrPos": 199,
     "lpr": 0,
     "dsr": 1000
   },
   {
-    "Driver": "Colossalshaft",
+    "Driver": "SLS_Generically",
     "lprPos": 205,
     "dsrPos": 200,
-    "lpr": 0,
-    "dsr": 1000
-  },
-  {
-    "Driver": "SLS_Generically",
-    "lprPos": 206,
-    "dsrPos": 201,
     "lpr": 0,
     "dsr": 1000
   }
